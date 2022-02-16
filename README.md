@@ -5,10 +5,10 @@
 [Notion](https://charm-locust-333.notion.site/SPIDER-COIN-c4795107c2474455bd4f93016bad8fbf)
 
 ## 팀원
-- [전진영 (Jeon, Jinyoung)]()
+- [전진영 (Jeon, Jinyoung)](https://github.com/jeonjinoung)
 - [임철순 (Lim,Cheolsoon)](https://github.com/POcodingWER)
 - [윤석훈 (Yoon, SeokHun)](https://github.com/imysh578)
-- [박해민 (Park, HaeMin)]()
+- [박해민 (Park, HaeMin)](https://github.com/euphratesriver0216)
 <br>
 
 # 1. 기획 의도
