@@ -5,9 +5,10 @@
 [Notion](https://charm-locust-333.notion.site/SPIDER-COIN-c4795107c2474455bd4f93016bad8fbf)
 
 ## 팀원
-- [김현호 (Kim, HyeonHo)]()
+- [전진영 (Jeon, Jinyoung)]()
+- [박철순 (Choi, )]()
 - [윤석훈 (Yoon, SeokHun)](https://github.com/imysh578)
-- [최현석 (Choi, HyunSeok)]()
+- [박해민 (Park, HaeMin)]()
 <br>
 
 # 1. 기획 의도
