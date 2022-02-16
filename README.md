@@ -6,7 +6,7 @@
 
 ## 팀원
 - [전진영 (Jeon, Jinyoung)]()
-- [임철순 (Lim,Cheolsoon )](https://github.com/POcodingWER)
+- [임철순 (Lim,Cheolsoon)](https://github.com/POcodingWER)
 - [윤석훈 (Yoon, SeokHun)](https://github.com/imysh578)
 - [박해민 (Park, HaeMin)]()
 <br>
