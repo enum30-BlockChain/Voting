@@ -62,3 +62,5 @@ contract VotingEnum30{
     voterRight[msg.sender] = false;   // 투표 완료 
   }
 }
+
+ㅋㅋㅋㅋㅋㅋ
