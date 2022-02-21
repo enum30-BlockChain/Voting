@@ -31,7 +31,7 @@ contract VotingEnum30{
   address[] doneVoter;
 
   // 투표를 마친 사람인지 확인하는 함수
-  function isValidVoter() internal returns (bool) {
+  function isValidVoter() view internal returns (bool) {
     // 배열에 현재 사용자 주소가 있는지 확인
     for (uint256 i = 0; i < doneVoter.length; i++) {
       //현사용자가 배열안에 있는지 비교
