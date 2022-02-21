@@ -63,4 +63,4 @@ contract VotingEnum30{
   }
 }
 
-ㅋㅋㅋㅋㅋㅋ
+//git commit test
