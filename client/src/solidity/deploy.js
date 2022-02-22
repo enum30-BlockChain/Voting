@@ -1,16 +1,4 @@
-const  Web3 = require("web3");
-const fs = require("fs");
-
-// ABI : 로우레벨로 컴파일된 인터페이스
-// 작성했던 코드들이 컴파일되서 나오는 것
-const ABI = JSON.parse(//JSON형태로 되어있어서 JSON형태로 표현하기위함
-  fs.readFileSync("./contracts_votingenum_sol_VotingEnum30.abi").toString()
-);
-
-// 바이트코드 : EVM 에서 실행하는 코드
-const BYTECODE = fs
-  .readFileSync("./contracts_votingenum_sol_VotingEnum30.bin")
-  .toString();
+import Web3 from "web3";
 
 // 노드의 JSON-RPC server와 연결 가나슈라는 RPC 통해서 연결??
 const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
@@ -19,6 +7,7 @@ const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
 
 //가나슈에 있는 accounts address 담을 배열 선언
 const accountAddressList = [];
+
 const getAccounts = async () => {
   //가나슈에 있는 주소 불러오기 
   await web3.eth.getAccounts().then((accounts) =>
@@ -42,15 +31,11 @@ const sendDeployContract = async (abi, bytecode) => {
   return deployedContract;
 }
 
-
-const deployVotingEnum30 = async () => {
+const deployContract = async (abi, bytecode) => {
   await getAccounts();  // account 불러오기
-  const votingEnum30Contract = await sendDeployContract(ABI, BYTECODE); // contract 배포
-  console.log(votingEnum30Contract);
+  const deployedContract = await sendDeployContract(abi, bytecode); // contract 배포
+  return deployedContract;
 }
 
-deployVotingEnum30();
 
-
-
-// const testContract = new web3.eth.Contract(ABI).methods
+export default deployContract;
