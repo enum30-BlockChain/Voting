@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
-import MainLayout, { Candidate, Voter } from "./layout";
+import MainLayout, { Candidate, Voter } from "./components/mainPage/Index";
 
 class App extends Component {
   render() {

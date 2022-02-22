@@ -1,5 +1,5 @@
-export { default as Candidate } from "./Candidate";
-export { default as Voter } from "./Voter";
+export { default as Candidate } from "../candidatesPage/Candidate";
+export { default as Voter } from "../votePage/Voter";
 
 const MainLayout = () => {
   return (
