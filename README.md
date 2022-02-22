@@ -50,6 +50,7 @@
 - `express`
 - `MySQL`
 - `MariaDB`
+- `Solidity`
 ### Test-Tool
 - `Jest`
 <br>
