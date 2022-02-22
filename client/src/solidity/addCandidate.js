@@ -21,18 +21,3 @@ const addCandidateMethod = async (name, age) => {
 };
 
 addCandidateMethod("석훈", 32);
-
-
-
-// web3.eth.getAccounts().then((accounts) => {
-//     accounts.forEach((account) => {
-//       accountAddressList.push(account);
-//     })
-//     const contract = new web3.eth.Contract(ABI, "0xAfBE55deA4d31e06B26E95a3E039564835704Abc")
-//     contract.methods
-//       .addCandidate("아라", 1)
-//       .send({ from: accountAddressList[0], gas: 1500000, gasPrice: 300000000000 })
-//       // .then(console.log);
-//     contract.methods.test().call().then(data => {console.log(data); console.log(data.length) })
-//   }
-// );
