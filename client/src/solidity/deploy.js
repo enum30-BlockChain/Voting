@@ -51,4 +51,6 @@ const deployVotingEnum30 = async () => {
 
 deployVotingEnum30();
 
+
+
 // const testContract = new web3.eth.Contract(ABI).methods
