@@ -1,9 +1,11 @@
-function Voter() {
+import VoterInfo from "./VoterInfo";
+
+const Voter = () => {
   return (
     <>
-      <div>투표자페이지</div>
+      <VoterInfo />
     </>
   );
-}
+};
 
 export default Voter;
