@@ -1,5 +1,5 @@
 import { useState } from "react";
-import addCandidateMethod from "js/addCandidate";
+import addCandidateMethod from "../../js/addCandidate.js";
 
 function Candidate() {
   const [name, setName] = useState("");
