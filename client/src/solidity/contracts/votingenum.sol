@@ -26,7 +26,7 @@ contract VotingEnum30{
   // => push 메서드는 동적배열에서만 사용 가능!
   Candidate[] candidateList;      // 동적 배열
   // Candidate[5] candidateList;  // 정적 배열
-
+  uint[] testArr = [0,1,2,3,4];
   // 투표를 완료한 사람의 주소를 모아두는 배열
   address[] doneVoter;
 
@@ -46,7 +46,7 @@ contract VotingEnum30{
   // 후보자를 추가해주는 함수
   function addCandidate(string memory _name, uint8 _age) external {
     // TODO: 후보자 등록시 비용 발생
-    require(candidateList.length <= 5);         // 대선 후보자 수가 5명 이하인지 확인
+    require(candidateList.length < 5);          // 대선 후보자 수가 5명 이하인지 확인
     candidateList.push(Candidate(_name, _age)); // 대선 후보자 리스트에 새로운 후보자 추가
   }
   // 함수 이전에 선행으로
@@ -62,5 +62,9 @@ contract VotingEnum30{
     candidateCount[_candidateName]++; // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
     doneVoter.push(msg.sender);       // 투표 완료한 사람을 배열에 추가
     voterRight[msg.sender] = false;   // 투표 완료 
+  }
+
+  function test() external view returns (Candidate[] memory){
+    return candidateList;
   }
 }
