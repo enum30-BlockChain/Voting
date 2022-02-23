@@ -5,7 +5,7 @@ function Candidate() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [number, setnumber] = useState(0);
-  const [cadidate, setcadidate] = useState([name, age, number]);
+  const [cadidate, setcadidate] = useState([]);
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
@@ -49,7 +49,9 @@ function Candidate() {
       <button onClick={handleOnClick}>등록</button>
       <div>후보자리스트</div>
       <th>
-        <tr></tr>
+        <tr>{cadidate[0]}</tr>
+        <tr>{cadidate[1]}</tr>
+        <tr>{cadidate[2]}</tr>
       </th>
     </>
   );
