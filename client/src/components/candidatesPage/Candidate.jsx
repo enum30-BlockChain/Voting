@@ -3,8 +3,8 @@ import { useState } from "react";
 
 function Candidate() {
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [number, setnumber] = useState(0);
+  const [age, setAge] = useState();
+  const [number, setnumber] = useState(1);
   const [cadidate, setcadidate] = useState([]);
 
   const handleOnNameChange = (e) => {
@@ -16,10 +16,15 @@ function Candidate() {
 
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
-    setnumber(number + 1);
-    const cadidate = [number, name, age];
-    console.log(cadidate);
-  };
+    if(cadidate.length<5){
+    setnumber( number +1);
+     cadidate.push({num:number, name:name, age:age});
+     setAge('')
+     setName('')
+    }else{
+      return  alert('5명이 넘어가요')
+    }
+    };
 
   return (
     <>
@@ -39,20 +44,21 @@ function Candidate() {
         <div className="input-age">
           <h2>나이</h2>
           <input
-            type="text"
+            type="number"
             placeholder="나이"
             value={age}
             onChange={handleOnAgeChange}
           ></input>
         </div>
       </div>
+
       <button onClick={handleOnClick}>등록</button>
       <div>후보자리스트</div>
-      <th>
-        <tr>{cadidate[0]}</tr>
-        <tr>{cadidate[1]}</tr>
-        <tr>{cadidate[2]}</tr>
-      </th>
+      {cadidate.map((a,i)=>{
+        return(
+          <div>순서:{a.num} 이름:{a.name}, 나이:{cadidate[i].age} </div> 
+        )
+      })}
     </>
   );
 }
