@@ -1,6 +1,7 @@
 import Candidate from "components/candidatesPage/Candidate";
 import Deploy from "components/deployPage/Deploy";
 import MainLayout from "components/mainPage/Index";
+import VoteDonePage from "components/voteDonePage/VoteDonePage";
 import Voter from "components/votePage/Voter";
 import deploy from "deploy";
 import React, { useEffect } from "react";
@@ -21,6 +22,7 @@ function App() {
           <Route index element={<MainLayout/>}></Route>
           <Route path="/candidate" element={<Candidate/>} />
           <Route path="/vote" element={<Voter/>} />
+          <Route path="/voteDone" element={<VoteDonePage/>} />
           <Route path="/deploy" element={<Deploy deploy={deploy}/>} />
           <Route path="/test" element={<Test methods ={VotingMethods}/>} />
         </Route>
