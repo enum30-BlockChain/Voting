@@ -17,9 +17,9 @@ function App() {
     <>
       <Routes>
         <Route path="/">
-          <Route index element={<MainLayout/>}></Route>
-          <Route path="/candidate" element={<Candidate/>} />
-          <Route path="/vote" element={<Voter/>} />
+          <Route index element={<MainLayout />}></Route>
+          <Route path="/candidate" element={<Candidate />} />
+          <Route path="/vote" element={<Voter />} />
           {/* <Route path="/votedone" element={<VoteDonePage/>} /> */}
         </Route>
       </Routes>

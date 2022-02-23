@@ -4,6 +4,7 @@ import { useState } from "react";
 function Candidate() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
+  const [number, setnumber] = useState(0);
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
@@ -14,6 +15,8 @@ function Candidate() {
 
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
+    setnumber(number + 1);
+    console.log(number, name, age);
   };
 
   return (
@@ -28,10 +31,16 @@ function Candidate() {
       <div className="input-container">
         <div className="input-age">
           <h2>나이</h2>
-          <input type="number" onChange={handleOnAgeChange}></input>
+          <input type="text" onChange={handleOnAgeChange}></input>
         </div>
       </div>
       <button onClick={handleOnClick}>등록</button>
+      <div>후보자리스트</div>
+      <th>
+        <tr>
+          순번 : {number} 이름 : {name}, 나이 : {age}
+        </tr>
+      </th>
     </>
   );
 }
