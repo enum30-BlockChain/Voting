@@ -48,6 +48,7 @@ const getWeb3 = () =>
       }
       // Legacy dApps
       else if (window.web3) {
+        provider = window.web3;
         console.log("Injected web3 detected");
       }
       // Injected web3 was not found
