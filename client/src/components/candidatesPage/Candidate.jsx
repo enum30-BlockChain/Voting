@@ -7,14 +7,14 @@ function Candidate() {
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
-  }
+  };
   const handleOnAgeChange = (e) => {
     setAge(e.target.value);
-  }
+  };
 
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
-  }
+  };
 
   return (
     <>
@@ -26,7 +26,7 @@ function Candidate() {
         </div>
       </div>
       <div className="input-container">
-        <div className="input-name">
+        <div className="input-age">
           <h2>나이</h2>
           <input type="number" onChange={handleOnAgeChange}></input>
         </div>
