@@ -16,7 +16,7 @@ function Voter() {
   //
   const handleOnclick = (e) => {
     setSeleted(e.target.value);
-    alert(seleted);
+    alert(candidates[seleted] + "투표하였습니다.");
   };
 
   return (
