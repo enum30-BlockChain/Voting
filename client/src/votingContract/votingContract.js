@@ -1,10 +1,8 @@
-import getWeb3 from "getWeb3";
 import Web3 from "web3";
 import { gas, gasPrice } from "./config";
 import votingContractInfo from "./votingContract.json";
 
 const ABI = votingContractInfo.abi;
-const BYTECODE = votingContractInfo.bytecode;
 const contractAddress = votingContractInfo.contractAddress;
 
 const provider = window.ethereum;
