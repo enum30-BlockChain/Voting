@@ -1,5 +1,6 @@
 import Candidate from "components/candidatesPage/Candidate";
 import MainLayout from "components/mainPage/Index";
+import VoteDonePage from "components/voteDonePage/VoteDonePage";
 import Voter from "components/votePage/Voter";
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -20,7 +21,7 @@ function App() {
           <Route index element={<MainLayout/>}></Route>
           <Route path="/candidate" element={<Candidate/>} />
           <Route path="/vote" element={<Voter/>} />
-          {/* <Route path="/votedone" element={<VoteDonePage/>} /> */}
+          <Route path="/voteDone" element={<VoteDonePage/>} />
         </Route>
       </Routes>
     </>
