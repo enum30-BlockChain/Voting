@@ -3,9 +3,9 @@ import { useState } from "react";
 
 function Candidate() {
   const [name, setName] = useState("");
-  const [age, setAge] = useState();
+  const [age, setAge] = useState(0);
   const [number, setnumber] = useState(1);
-  const [cadidate, setcadidate] = useState([]);
+  const [candidate, setcandidate] = useState([]);
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
@@ -14,18 +14,31 @@ function Candidate() {
     setAge(e.target.value);
   };
 
+  const handleOnCandidateChange = (e) => {
+    setcandidate(e.target.value);
+  };
+
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
-    if(number<=5){
-    setnumber( number +1);
-     cadidate.push({num:number, name:name, age:age});
-     setAge('')
-     setName('')
-     console.log(cadidate)
-    }else{
-      return  alert('5명이 넘어가요')
-    }
-    };
+    setnumber(number + 1);
+    candidate.push({ number: number, name: name, age: age });
+    console.log(candidate);
+  };
+
+  // const handleOnNumChange = () => {
+  //   if (candidate.number.length >= 5) {
+  //     candidate.push({ number: number, name: name, age: age });
+  //   } else {
+  //     return alert("5명 이상의 후보는 등록이 불가합니다");
+  //   }
+  // };
+
+  // const handleOnInput(el, maxlength) {
+  //   if(el.value.length > maxlength)  {
+  //     el.value
+  //       = el.value.substr(0, maxlength);
+  //   }
+  // }
 
   return (
     <>
@@ -36,6 +49,7 @@ function Candidate() {
           <input
             type="text"
             placeholder="이름"
+            maxlength="4"
             value={name}
             onChange={handleOnNameChange}
           ></input>
@@ -45,21 +59,24 @@ function Candidate() {
         <div className="input-age">
           <h2>나이</h2>
           <input
-            type="number"
+            type="text"
             placeholder="나이"
             value={age}
             onChange={handleOnAgeChange}
           ></input>
         </div>
       </div>
-
       <button onClick={handleOnClick}>등록</button>
-      <div>후보자리스트</div>
-      {cadidate.map((a,i)=>{
-        return(
-          <div>순서:{a.num} 이름:{a.name}, 나이:{cadidate[i].age} </div> 
-        )
-      })}
+      <h3>후보자리스트</h3>
+      <ul>
+        {candidate.map((a) => (
+          <box>
+            <div>후보자 번호 : {a.number}</div>
+            <div>후보자 이름 : {a.name}</div>
+            <div>후보자 나이 : {a.age}</div>
+          </box>
+        ))}
+      </ul>
     </>
   );
 }
