@@ -5,11 +5,10 @@ const CandidateVote = ({ id, name, count, setSeleted }) => {
   const handleOnclick = (e) => {
     setSeleted(e.target.value);
   };
-
   return (
     <div className="candidateVote-container">
-      <div className="candidate-num">{id}</div>
-      <div className="candidatename">{name}</div>
+      <div className="candidate-num">{id + "번"}</div>
+      <div className="candidate-name">{name}</div>
       <div>
         <input
           type="radio"
@@ -18,7 +17,7 @@ const CandidateVote = ({ id, name, count, setSeleted }) => {
           onClick={handleOnclick}
         />
       </div>
-      <div className="candidatecount">{count}</div>
+      <div className="candidate-count">{count}</div>
     </div>
   );
 };

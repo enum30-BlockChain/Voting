@@ -16,16 +16,16 @@ function Candidate() {
 
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
-    if(number<=5){
-    setnumber( number +1);
-     cadidate.push({num:number, name:name, age:age});
-     setAge('')
-     setName('')
-     console.log(cadidate)
-    }else{
-      return  alert('5명이 넘어가요')
+    if (number <= 5) {
+      setnumber(number + 1);
+      cadidate.push({ num: number, name: name, age: age });
+      setAge("");
+      setName("");
+      console.log(cadidate);
+    } else {
+      return alert("5명이 넘어가요");
     }
-    };
+  };
 
   return (
     <>
@@ -55,10 +55,12 @@ function Candidate() {
 
       <button onClick={handleOnClick}>등록</button>
       <div>후보자리스트</div>
-      {cadidate.map((a,i)=>{
-        return(
-          <div>순서:{a.num} 이름:{a.name}, 나이:{cadidate[i].age} </div> 
-        )
+      {cadidate.map((a, i) => {
+        return (
+          <div>
+            순서:{a.num} 이름:{a.name}, 나이:{cadidate[i].age}{" "}
+          </div>
+        );
       })}
     </>
   );

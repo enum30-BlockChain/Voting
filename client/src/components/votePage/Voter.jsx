@@ -13,19 +13,23 @@ function Voter() {
   ]);
   const [seleted, setSeleted] = useState("");
 
-  //
   const handleOnclick = (e) => {
     setSeleted(e.target.value);
-    alert(candidates[seleted] + "투표하였습니다.");
+    if (candidates[seleted] !== 0) {
+      alert(candidates[seleted] + "투표하였습니다.");
+      console.log(candidates[setCount(e.target.value)]);
+      console.log(count + 1);
+    }
   };
 
   return (
     <>
       <div>투표페이지</div>
       <div className="input-container">
-        <div className="candidatenumber">후보명</div>
-        <div className="vote">투표권</div>
-        <div className="votecount">투표수</div>
+        <div className="candidatenumber">순번</div>
+        <div className="candidatename">후보명</div>
+        <div className="votepaper">투표용지</div>
+        <div className="candidatecount">투표수</div>
       </div>
       {candidates.map((candidate, index) => (
         <CandidateVote
