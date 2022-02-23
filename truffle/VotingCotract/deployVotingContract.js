@@ -1,5 +1,5 @@
-import fs from "fs";
-import deployContract from "../deploy.js";
+const fs = require("fs");
+const deployContract = require("../deploy.js");
 
 let ABI;
 let contractAddress;
@@ -29,5 +29,3 @@ deployVotingContract().then((constractInfo) => {
   fs.writeFileSync("voting.abi", JSON.stringify(ABI));
   fs.writeFileSync("votingContractAddress.txt", contractAddress);
 });
-
-// export default deployVotingContract;

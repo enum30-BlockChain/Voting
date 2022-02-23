@@ -1,9 +1,10 @@
-import Web3 from "web3";
+const Web3 = require("web3");
 
 // 노드의 JSON-RPC server와 연결 가나슈라는 RPC 통해서 연결??
-const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
+const providerGanache = new Web3.providers.HttpProvider("http://127.0.0.1:7545");
 
 
+const web3 = new Web3(providerGanache);
 
 //가나슈에 있는 accounts address 담을 배열 선언
 const accountAddressList = [];
@@ -38,4 +39,4 @@ const deployContract = async (abi, bytecode) => {
 }
 
 
-export default deployContract;
+module.exports = {deployContract};
