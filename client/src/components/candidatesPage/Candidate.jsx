@@ -16,11 +16,12 @@ function Candidate() {
 
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
-    if(cadidate.length<5){
+    if(number<=5){
     setnumber( number +1);
      cadidate.push({num:number, name:name, age:age});
      setAge('')
      setName('')
+     console.log(cadidate)
     }else{
       return  alert('5명이 넘어가요')
     }
