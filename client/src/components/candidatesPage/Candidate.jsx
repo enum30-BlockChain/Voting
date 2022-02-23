@@ -5,6 +5,7 @@ function Candidate() {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [number, setnumber] = useState(0);
+  const [cadidate, setcadidate] = useState([name, age, number]);
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
@@ -16,7 +17,8 @@ function Candidate() {
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
     setnumber(number + 1);
-    console.log(number, name, age);
+    const cadidate = [number, name, age];
+    console.log(cadidate);
   };
 
   return (
@@ -25,21 +27,29 @@ function Candidate() {
       <div className="input-container">
         <div className="input-name">
           <h2>이름</h2>
-          <input type="text" onChange={handleOnNameChange}></input>
+          <input
+            type="text"
+            placeholder="이름"
+            value={name}
+            onChange={handleOnNameChange}
+          ></input>
         </div>
       </div>
       <div className="input-container">
         <div className="input-age">
           <h2>나이</h2>
-          <input type="text" onChange={handleOnAgeChange}></input>
+          <input
+            type="text"
+            placeholder="나이"
+            value={age}
+            onChange={handleOnAgeChange}
+          ></input>
         </div>
       </div>
       <button onClick={handleOnClick}>등록</button>
       <div>후보자리스트</div>
       <th>
-        <tr>
-          순번 : {number} 이름 : {name}, 나이 : {age}
-        </tr>
+        <tr></tr>
       </th>
     </>
   );

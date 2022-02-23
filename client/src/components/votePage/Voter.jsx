@@ -1,8 +1,4 @@
-import { useState } from "react";
-
 function Voter() {
-  // const [Number, SetNumber] = useState[1,2,3,4,5];
-
   return (
     <>
       <div>투표페이지</div>
