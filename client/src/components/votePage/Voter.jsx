@@ -1,28 +1,45 @@
 import { useState } from "react";
-import Candidate from "components/candidatesPage/Candidate";
+import CandidateVote from "./CandidateVote";
+import "./voter.css";
 
 function Voter() {
-  const [count, setcount] = useState(0);
-  const [candidate, setcandidate] = useState(["철순", "진영", "해민", "석훈"]);
+  const [count, setCount] = useState(0);
+  const [candidates, setCandidates] = useState([
+    "철순",
+    "진영",
+    "해민",
+    "석훈",
+    "진황",
+  ]);
+  const [seleted, setSeleted] = useState("");
+
+  //
+  const handleOnclick = (e) => {
+    setSeleted(e.target.value);
+    alert(seleted);
+  };
 
   return (
     <>
       <div>투표페이지</div>
       <div className="input-container">
-        <th className="candidatenumber">후보번호</th>
-        <tr className="candidatename">{candidate[0]}</tr>
-        <tr className="candidatename">{candidate[1]}</tr>
-        <tr className="candidatename">{candidate[2]}</tr>
-        <tr className="candidatename">{candidate[3]}</tr>
-        <th>
-          <input type="checkbox" />
-        </th>
-        <th className="candidatecount">투표수 : {count}</th>
-
-        <button id="increment" onClick={() => setcount(count + 1)}>
-          투표
-        </button>
+        <div className="candidatenumber">후보명</div>
+        <div className="vote">투표권</div>
+        <div className="votecount">투표수</div>
       </div>
+      {candidates.map((candidate, index) => (
+        <CandidateVote
+          id={index + 1}
+          key={index}
+          name={candidate}
+          count={count}
+          setSeleted={setSeleted}
+        />
+      ))}
+
+      <button id="votepaper" onClick={handleOnclick}>
+        투표
+      </button>
     </>
   );
 }
