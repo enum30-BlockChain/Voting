@@ -1,5 +1,5 @@
 import { useState } from "react";
-import addCandidateMethod from "../../js/addCandidate.js";
+// import addCandidateMethod from "../../votingContract/addCandidate.js";
 
 function Candidate() {
   const [name, setName] = useState("");
@@ -13,7 +13,7 @@ function Candidate() {
   }
 
   const handleOnClick = () => {
-    addCandidateMethod(name, age)
+    // addCandidateMethod(name, age)
   }
 
   return (
