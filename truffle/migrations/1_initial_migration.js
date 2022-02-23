@@ -1,5 +1,5 @@
-const Migrations = artifacts.require("Migrations");
+const VotingEnum30 = artifacts.require("VotingEnum30");
 
 module.exports = function (deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(VotingEnum30);
 };

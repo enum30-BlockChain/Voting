@@ -1,5 +1,5 @@
-import Web3 from "web3";
-import fs from "fs";
+const Web3 = require("web3");
+const fs = require("fs");
 
 const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:7545");
 
@@ -20,4 +20,4 @@ const addCandidateMethod = async (name, age) => {
     .then(console.log)
 };
 
-export default addCandidateMethod;
+module.exports = addCandidateMethod;
