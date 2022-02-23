@@ -28,14 +28,14 @@ contract VotingEnum30{
   // Candidate[5] candidateList;  // 정적 배열
   uint[] testArr = [0,1,2,3,4];
   // 투표를 완료한 사람의 주소를 모아두는 배열
-  address[] doneVoter;
+  address[] doneVoterList;
 
   // 투표를 마친 사람인지 확인하는 함수
   function isValidVoter() view internal returns (bool) {
     // 배열에 현재 사용자 주소가 있는지 확인
-    for (uint256 i = 0; i < doneVoter.length; i++) {
+    for (uint256 i = 0; i < doneVoterList.length; i++) {
       // 현사용자가 배열안에 있는지 비교
-      if (doneVoter[i] == msg.sender) {
+      if (doneVoterList[i] == msg.sender) {
         return false; // 같은순간 false 반환
       }
     }
@@ -60,11 +60,17 @@ contract VotingEnum30{
   function voting(string memory _candidateName) external voterRightCheck { 
     // TODO: _candidateName 이 candidateList 배열에 있는지 확인
     candidateCount[_candidateName]++; // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
-    doneVoter.push(msg.sender);       // 투표 완료한 사람을 배열에 추가
+    doneVoterList.push(msg.sender);       // 투표 완료한 사람을 배열에 추가
     voterRight[msg.sender] = false;   // 투표 완료 
   }
 
-  function test() external view returns (Candidate[] memory){
+  // 후보자 리스트 불러오기
+  function getCandidateList () external view returns (Candidate[] memory){
     return candidateList;
+  }
+
+  // 투표 완료한 유권자 리스트 불러오기 
+  function getDoneVoterList() external view returns (address[] memory){
+    return doneVoterList;
   }
 }
