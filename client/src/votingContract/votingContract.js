@@ -96,5 +96,13 @@ export default class VotingMethods {
       .call()
       .then(console.log);
   }
-  
+
+  static setVoteCountsToWin = async (newVoteCountsToWin) => {
+    const selectedAccount = this.getSeletedAccount();
+    
+    contract.methods
+			.setVoteCountsToWin(newVoteCountsToWin)
+			.send({ from: selectedAccount, gas, gasPrice })
+			.then(console.log);
+  }
 }
