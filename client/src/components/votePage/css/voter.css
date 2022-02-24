@@ -1,3 +1,19 @@
 .input-container {
   display: flex;
 }
+
+.candidateVote-component {
+  padding-left: 30px;
+}
+
+.candidateVote-container {
+  display: flex;
+}
+
+.button-group {
+  margin-bottom: 10px;
+}
+
+.button-group a {
+  text-decoration: none;
+}

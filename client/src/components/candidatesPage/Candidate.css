@@ -1,0 +1,36 @@
+.candidate-component {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-left: 30px;
+}
+
+.candidateCard-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.candidateCard-container {
+  margin-right: 10px;
+}
+
+.candidateCard-container img {
+  height: 200px;
+  width: 150px;
+}
+
+.candidateCard-account {
+  word-wrap: break-word;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  width: 300px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  width: 300px;
+}

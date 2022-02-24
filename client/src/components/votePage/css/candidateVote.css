@@ -1,3 +1,8 @@
 .candidateVote-container {
   display: flex;
 }
+
+.candidateCard-footer {
+  display: flex;
+  padding-left: 20px;
+}

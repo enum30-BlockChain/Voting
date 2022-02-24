@@ -10,6 +10,8 @@ contract VotingEnum30{
 
   address owner;
 
+  event voted(address indexed voterAccount);
+
   // 투표 상태 변수들
   enum VotingState {
     CONTINUE,
@@ -96,6 +98,7 @@ contract VotingEnum30{
     }
     doneVoterList.push(msg.sender);               // 투표 완료한 사람을 배열에 추가
     hasVoteDone[msg.sender] = true;               // 투표 완료 
+    emit voted(msg.sender);
   }
 
   // 후보자 리스트 불러오기

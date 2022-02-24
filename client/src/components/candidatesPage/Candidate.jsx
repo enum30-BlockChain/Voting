@@ -5,6 +5,12 @@ import two from "./image/two.jpg";
 import three from "./image/three.jpg";
 import four from "./image/four.jpg";
 import five from "./image/five.jpg";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
+
+import "./Candidate.css";
+import CandidateCard from "./CandidateCard";
 
 function Candidate() {
   const [name, setName] = useState("");
@@ -23,7 +29,7 @@ function Candidate() {
 
   const voterAddressOverlap = async () => {
     for (let i = 0; i < cadidate.length; i++) {
-      console.log(2222222222, cadidate[i].account);
+      console.log(cadidate[i].account);
       console.log(voterAddress);
       if (cadidate[i].account === voterAddress) {
         return false;
@@ -52,54 +58,67 @@ function Candidate() {
     await VotingMethods.addCandidate(name, age);
   };
 
-  useEffect(async () => {
-    setcadidate(await VotingMethods.getCandidateList());
-    setvoterAddress(await VotingMethods.getSeletedAccount());
+  useEffect(() => {
+    const init = async () => {
+      setcadidate(await VotingMethods.getCandidateList());
+      setvoterAddress(await VotingMethods.getSeletedAccount());
+    }
+    init();
   }, []);
 
   return (
-    <>
-      <div>
-        후보자 페이지
-        {/* <img src={one} alt="one.jpg" /> */}
-      </div>
-      <div className="input-container">
-        <div className="input-name">
-          <h2>이름</h2>
-          <input
-            type="text"
-            placeholder="이름"
-            value={name}
-            onChange={handleOnNameChange}
-          ></input>
-        </div>
-      </div>
-      <div className="input-container">
-        <div className="input-age">
-          <h2>나이</h2>
-          <input
-            type="number"
-            placeholder="나이"
-            value={age}
-            onChange={handleOnAgeChange}
-          ></input>
-        </div>
-      </div>
-
-      <button onClick={handleOnClick}>클라이언트등록 유효성검사</button>
-      <button onClick={Transaction}>트렌젝션으로 바로보내기</button>
-      <div>후보자리스트</div>
-      {cadidate.map((a, i) => {
-        return (
-          <div key={i}>
-            순서:{i + 1} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
-            주소{cadidate[i].account} 얼굴:
-            <img src={image[i]} />
+		<div className="candidate-component">
+      <div className="add-form">
+        <h1>후보자 등록 페이지</h1>
+        <div className="input-container">
+          <div className="input-name">
+            <h2>이름</h2>
+            <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+              type="text"
+              placeholder="이름"
+              value={name}
+              onChange={handleOnNameChange}
+            />
           </div>
-        );
-      })}
-    </>
-  );
+          <div className="input-age">
+            <h2>나이</h2>
+            <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+              type="number"
+              placeholder="나이"
+              value={age}
+              onChange={handleOnAgeChange}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="button-group">
+        <Button variant="contained" onClick={handleOnClick}>클라이언트등록 유효성검사</Button>
+        <Button variant="contained" onClick={Transaction}>트렌젝션으로 바로보내기</Button>
+      </div>
+      <div className="candidateList-container">
+        <h3>후보자리스트</h3>
+        <div className="candidateCard-wrap">
+          {cadidate.map((a, i) => (
+            <CandidateCard
+              key={i}
+              index={i}
+              name={cadidate[i].name}
+              age={cadidate[i].age}
+              account={cadidate[i].account}
+              image={image}
+            />
+          ))}
+        </div>
+      </div>
+		</div>
+	);
 }
+
 
 export default Candidate;
