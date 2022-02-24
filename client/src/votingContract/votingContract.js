@@ -88,4 +88,12 @@ export default class VotingMethods {
       .send({ from: selectedAccount, gas, gasPrice })
       .then(console.log);
   }
+
+  static getMaxVoteCounts = async () => {    
+    contract.methods
+      .finishVoting()
+      .call()
+      .then(console.log);
+  }
+  
 }
