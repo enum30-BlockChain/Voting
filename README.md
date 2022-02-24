@@ -33,26 +33,22 @@
 ## 4-1. 🛠 Tools
 ### 📢 For Team Communication
 - `Discord`
-- `Notion`
-- `Github`
+- `Github` => Issues[open, close] / Projects(memo)
 ### ⚙ For Development
-- `Ubuntu-20.04`
+- `Cmd git`
 - `VScode`
+- `Remix.ethereum`
+- `Ganache`
+- `MetaMask`
 <br>
 
 ## 4-2. 📚 Languages & Frameworks
 ### Front-end
 - `React`
 - `Javascript`
-- `TypeScript`
 ### Back-end
 - `NodeJS`
-- `express`
-- `MySQL`
-- `MariaDB`
 - `Solidity`
-### Test-Tool
-- `Jest`
 <br>
 
 ## 4-3. 🛒 Library
@@ -60,11 +56,13 @@
 - `express`         : @4.17
 
 ### router
-- `axios`           : @0.24
+- `web`           : @0.24 <= "assert",
+    "buffer","crypto-browserify","https-browserify","os-browserify","process","react-app-rewired",
+    "stream-browserify","stream-http","url""
 - `react-router-dom`: @6
 
 ### database
-- `mysql2`          : @2.3
+- `web-blockchain`          : @2.3
 
 ### security
 - `crypto-js`       : @4.1
