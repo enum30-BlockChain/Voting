@@ -44,7 +44,7 @@ function Candidate() {
 
   useEffect(async() => {
     setcadidate(await VotingMethods.getCandidateList());
-    setvoterAddress (await VotingMethods.selectedAccount());
+    setvoterAddress (await VotingMethods.getSeletedAccount());
   }, []);
 
   return (
