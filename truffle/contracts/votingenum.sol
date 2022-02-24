@@ -2,7 +2,7 @@
 pragma solidity >=0.5.0 <0.9.0;
 
 contract VotingEnum30{
-  uint addCandidateFee = 0.01 ether;
+  uint addCandidateFee = 0.01 ether;  
   address creator = 0x3F39cfbAFf46cB736A603269d14a7e9AdF5158B4;
 
   // 투표 상태 변수들
