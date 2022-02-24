@@ -23,10 +23,6 @@ function Voter() {
       setCount(selectedCandidate[3]);
       // return console.log(selectedCandidate[3]);
     }
-    for (let i = 6; i < selectedCandidate[3].length; i++) {
-      const totalvotes = selectedCandidate[3][i];
-      console.log(totalvotes);
-    }
   };
 
   return (
