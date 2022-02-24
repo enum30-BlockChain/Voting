@@ -31,7 +31,7 @@ function App() {
           <Route path="/elected" element={<Elected />} />
           <Route path="/voteDone" element={<VoteDonePage />} />
           <Route path="/deploy" element={<Deploy deploy={deploy} />} />
-          <Route path="/test" element={<Test methods={VotingMethods} />} />
+          <Route path="/test" element={<Test />} />
         </Route>
       </Routes>
     </>
@@ -41,13 +41,16 @@ function App() {
 const Test = ({ methods }) => {
   const [candidateList, setCandidateList] = useState([]);
 
-  useEffect(async () => {
-    const getResult = await methods.getCandidateList();
-    setCandidateList(getResult);
-
-
-    const myAccount = await methods.getSeletedAccount();
-    console.log(`myAccount: ${myAccount}`);
+  useEffect(() => {
+    const initFunc = async () => {
+      const getResult = await VotingMethods.getCandidateList();
+      setCandidateList(getResult);
+  
+  
+      const myAccount = await VotingMethods.getSeletedAccount();
+      console.log(`myAccount: ${myAccount}`);
+    }
+    initFunc();
   }, [])
   
   
@@ -56,14 +59,14 @@ const Test = ({ methods }) => {
   };
 
   const handleOnClickGet = () => {
-    methods.getCandidateList();
+    VotingMethods.getCandidateList();
     console.log(candidateList);
   };
   const handleOnClickReset = () => {
-    methods.resetVoting();
+    VotingMethods.resetVoting();
   };
   const handleOnClickStop = () => {
-    methods.finishVoting();
+    VotingMethods.finishVoting();
   };
 
   return (

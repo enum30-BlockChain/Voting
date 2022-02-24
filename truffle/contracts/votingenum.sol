@@ -35,6 +35,10 @@ contract VotingEnum30{
   // 후보자 번호 => 후보자 주소
   mapping (uint => address) candidateIndexToAddress;
 
+  // 당선자
+  Candidate private nullWinner = Candidate("", 0, address(0), 0);
+  Candidate winner = nullWinner;
+
   // 선행적으로 실행해야할 
   constructor () {
     currentState = defaultVotingState;
@@ -84,6 +88,7 @@ contract VotingEnum30{
     selectCandidate.voteCounts++;  // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
     if(selectCandidate.voteCounts >= voteCountToWin) {
       currentState = VotingState.FINISHED;
+      winner = candidateList[_candidateIndex];
     }
     doneVoterList.push(msg.sender);               // 투표 완료한 사람을 배열에 추가
     hasVoteDone[msg.sender] = true;               // 투표 완료 
@@ -106,6 +111,11 @@ contract VotingEnum30{
     }
   }
 
+  // 당선자 불러오기
+  function getWinner() external view returns (Candidate memory){
+    return winner;
+  }
+
   // 컨트랙트 소유자인지 확인
   modifier onlyOwner {
     require(msg.sender == owner);
@@ -117,8 +127,9 @@ contract VotingEnum30{
     resetVoteRight();
     delete candidateList;
     delete doneVoterList;
-    currentState = defaultVotingState;  // 투표 상태를 초기값으로 변경
-    voteCountToWin = defaultVoteCountToWin;
+    currentState = defaultVotingState;      // 투표 상태를 초기값으로 변경
+    voteCountToWin = defaultVoteCountToWin; // 당선될 표 수를 초기값으로 변경
+    winner = nullWinner;                    // 당선자를 초기값으로 변경
   }
   
   // 현재 투표 활성화 상태 체크

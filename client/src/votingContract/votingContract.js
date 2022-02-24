@@ -90,11 +90,15 @@ export default class VotingMethods {
       .then(console.log);
   }
 
-  static getWinner = async () => {    
-    contract.methods
+  static getWinner = async () => {  
+    let winner;  
+    await contract.methods
       .getWinner()
       .call()
-      .then(console.log);
+      .then(result => {
+        winner = result;
+      });
+    return winner;
   }
 
   static setVoteCountsToWin = async (newVoteCountsToWin) => {
