@@ -6,13 +6,7 @@ import VotingMethods from "../../votingContract/votingContract";
 
 function Voter() {
   const [count, setCount] = useState(0);
-  const [candidates, setCandidates] = useState([
-    "철순",
-    "진영",
-    "해민",
-    "석훈",
-    "진황",
-  ]);
+  const [candidates, setCandidates] = useState([]);
 
   useEffect(async () => {
     const candidates = await VotingMethods.getCandidateList();
@@ -28,6 +22,10 @@ function Voter() {
       VotingMethods.voting(seleted);
       setCount(selectedCandidate[3]);
       console.log(selectedCandidate);
+    }
+    for (let i = 5; i < candidates[3].length; i++) {
+      const votetotal = candidates[3][i];
+      console.log(votetotal);
     }
   };
 
