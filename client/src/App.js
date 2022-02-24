@@ -45,12 +45,10 @@ const Test = ({ methods }) => {
     const getResult = await methods.getCandidateList();
     setCandidateList(getResult);
 
-
     const myAccount = await methods.getSeletedAccount();
     console.log(`myAccount: ${myAccount}`);
-  }, [])
-  
-  
+  }, []);
+
   const handleOnClickAdd = () => {
     VotingMethods.addCandidate("진영", 30);
   };
