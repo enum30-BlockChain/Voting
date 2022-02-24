@@ -62,6 +62,9 @@ const Test = ({ methods }) => {
   const handleOnClickReset = () => {
     methods.resetVoting();
   };
+  const handleOnClickStop = () => {
+    methods.resetVoting();
+  };
 
   return (
     <>
@@ -69,6 +72,7 @@ const Test = ({ methods }) => {
       <button onClick={handleOnClickAdd}>Add Candidate</button>
       <button onClick={handleOnClickGet}>Get Candidate List</button>
       <button onClick={handleOnClickReset}>Reset</button>
+      <button onClick={handleOnClickStop}>Stop</button>
     </>
   );
 };

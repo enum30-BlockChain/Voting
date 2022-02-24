@@ -7,6 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import "./navbar.css"
 
 const pages = ["CANDIDATE SUBMIT", "VOTING", "ELETED"];
 
@@ -15,7 +16,7 @@ const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className="navbar-container">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
@@ -39,7 +40,7 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Link to="/candidate">
-              <Button>candidate SUBMIT</Button>
+              <Button >candidate SUBMIT</Button>
             </Link>
             <Link to="/vote">
               <Button>vote</Button>

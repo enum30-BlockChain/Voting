@@ -79,4 +79,13 @@ export default class VotingMethods {
       .send({ from: selectedAccount, gas, gasPrice })
       .then(console.log);
   };
+
+  static finishVoting = async () => {
+    const selectedAccount = await this.getSeletedAccount();
+    
+    contract.methods
+      .finishVoting()
+      .send({ from: selectedAccount, gas, gasPrice })
+      .then(console.log);
+  }
 }
