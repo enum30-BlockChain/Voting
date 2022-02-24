@@ -10,9 +10,6 @@ const web3 = new Web3(provider);
 const contract = new web3.eth.Contract(ABI, contractAddress);
 
 export default class VotingMethods {
-<<<<<<< HEAD
-  // 현재 선택된 내 지갑 주소 불러오기 
-=======
 
  static selectedAccount = async()=>{
     const selectedAccount= await web3.eth
@@ -21,7 +18,6 @@ export default class VotingMethods {
     return selectedAccount;
   }
 
->>>>>>> main
   static addCandidate = async (_name, _age) => {
     const selectedAccount = await web3.eth
       .getAccounts()
@@ -49,7 +45,6 @@ export default class VotingMethods {
   };
   
   static getCandidateList = async () => {
-<<<<<<< HEAD
     let candidateList;
     await contract.methods.getCandidateList().call().then((candidates) => {
       console.log(`후보자 리스트 : ${candidates}`);
@@ -65,9 +60,6 @@ export default class VotingMethods {
       doneVoterList = doneVoters;
     });
     return doneVoterList;
-=======
-  return  contract.methods.getCandidateList().call().then();
->>>>>>> main
   }
 
   static resetVoting = async () => {

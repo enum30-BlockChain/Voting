@@ -35,7 +35,7 @@ const getWeb3 = () =>
             console.log(`Selected Account is ${selectedAccount}`);
             setTimeout(() => {
               window.location.reload();
-            }, 100);
+            }, 300);
           });
 
           // 네트워크가 변경되면 1초 후 웹페이지 새로고침
