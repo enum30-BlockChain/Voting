@@ -25,7 +25,11 @@ export default class VotingMethods {
     // addCandidate 함수 트랜잭션으로 보내기
     contract.methods
       .addCandidate(_name, _age)
-      .send({ from: selectedAccount, gas: gas, gasPrice: gasPrice })
+      .send({
+        from: selectedAccount,
+        value: web3.utils.toWei("0.01", "ether"),
+        gas: gas,
+      })
       .then(console.log);
   };
 

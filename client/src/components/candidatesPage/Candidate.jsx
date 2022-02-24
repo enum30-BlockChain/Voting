@@ -12,7 +12,7 @@ function Candidate() {
     setName(e.target.value);
   };
   const handleOnAgeChange = (e) => {
-    setAge(e.target.value);
+    setAge(Number(e.target.value));
   };
 
   const voterAddressOverlap = async () => {
