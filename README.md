@@ -1,5 +1,5 @@
 # Enum30
-> 프로젝트 기간 : 
+> 프로젝트 기간 : 22.02.18~02.25
 
 
 ## 협업 Tool
@@ -76,5 +76,7 @@
 - `mui`             : @5.2
 <br>
 
-# 5. 
+# 5. 구성도
+![image](https://user-images.githubusercontent.com/89626182/155558060-4b576ae3-5e0f-495c-b315-c7f484b32bad.png)
+
 
