@@ -44,14 +44,19 @@ const Test = ({ methods }) => {
   useEffect(async () => {
     const getResult = await methods.getCandidateList();
     setCandidateList(getResult);
-  }, []);
 
+
+    const myAccount = await methods.getSeletedAccount();
+    console.log(`myAccount: ${myAccount}`);
+  }, [])
+  
+  
   const handleOnClickAdd = () => {
     VotingMethods.addCandidate("진영", 30);
   };
 
   const handleOnClickGet = () => {
-    // methods.getCandidateList();
+    methods.getCandidateList();
     console.log(candidateList);
   };
   const handleOnClickReset = () => {
