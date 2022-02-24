@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { useState } from "react";
-import { Button, Box } from "@material-ui/core";
 // import addCandidateMethod from "../../votingContract/addCandidate.js";
 
 function Candidate(e) {
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState();
   const [number, setnumber] = useState(1);
-  const [candidate, setcandidate] = useState([]);
+  const [cadidate, setcadidate] = useState([]);
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
@@ -16,73 +14,57 @@ function Candidate(e) {
     setAge(e.target.value);
   };
 
-  const handleOnCandidateChange = (e) => {
-    setcandidate(e.target.value);
-  };
-
   const handleOnClick = () => {
     // addCandidateMethod(name, age)
-    setnumber(number + 1);
-    candidate.push({ number: number, name: name, age: age });
-    console.log(candidate);
+    if (number <= 5) {
+      setnumber(number + 1);
+      cadidate.push({ num: number, name: name, age: age });
+      setAge("");
+      setName("");
+      console.log(cadidate);
+    } else {
+      return alert("5명이 넘어가요");
+    }
   };
-
-  // const handleOnNumChange = () => {
-  //   if (candidate.number.length >= 5) {
-  //     candidate.push({ number: number, name: name, age: age });
-  //   } else {
-  //     return alert("5명 이상의 후보는 등록이 불가합니다");
-  //   }
-  // };
-
-  // const handleOnInput(el, maxlength) {
-  //   if(el.value.length > maxlength)  {
-  //     el.value
-  //       = el.value.substr(0, maxlength);
-  //   }
-  // }
+  useEffect(() => {
+    console.log("후보등록중입니다.");
+  }, [e]);
 
   return (
     <>
-      <Box>
-        <div>후보자 페이지</div>
-        <div className="input-container">
-          <div className="input-name">
-            <h2>이름</h2>
-            <input
-              type="text"
-              placeholder="이름"
-              maxlength="4"
-              value={name}
-              onChange={handleOnNameChange}
-            ></input>
-          </div>
+      <div>후보자 페이지</div>
+      <div className="input-container">
+        <div className="input-name">
+          <h2>이름</h2>
+          <input
+            type="text"
+            placeholder="이름"
+            value={name}
+            onChange={handleOnNameChange}
+          ></input>
         </div>
-        <div className="input-container">
-          <div className="input-age">
-            <h2>나이</h2>
-            <input
-              type="text"
-              placeholder="나이"
-              value={age}
-              onChange={handleOnAgeChange}
-            ></input>
-          </div>
+      </div>
+      <div className="input-container">
+        <div className="input-age">
+          <h2>나이</h2>
+          <input
+            type="number"
+            placeholder="나이"
+            value={age}
+            onChange={handleOnAgeChange}
+          ></input>
         </div>
-        <Button weight="30px" onClick={handleOnClick}>
-          등록
-        </Button>
-        <h3>후보자리스트</h3>
-        <ul>
-          {candidate.map((a) => (
-            <box>
-              <div>후보자 번호 : {a.number}</div>
-              <div>후보자 이름 : {a.name}</div>
-              <div>후보자 나이 : {a.age}</div>
-            </box>
-          ))}
-        </ul>
-      </Box>
+      </div>
+
+      <button onClick={handleOnClick}>등록</button>
+      <div>후보자리스트</div>
+      {cadidate.map((a, i) => {
+        return (
+          <div>
+            순서:{a.num} 이름:{a.name}, 나이:{cadidate[i].age}{" "}
+          </div>
+        );
+      })}
     </>
   );
 }
