@@ -1,5 +1,6 @@
 import Candidate from "components/candidatesPage/Candidate";
 import Deploy from "components/deployPage/Deploy";
+import Elected from "components/elected/Elected";
 import MainLayout from "components/mainPage/Index";
 import VoteDonePage from "components/voteDonePage/VoteDonePage";
 import Voter from "components/votePage/Voter";
@@ -19,28 +20,25 @@ function App() {
     <>
       <Routes>
         <Route path="/">
-          <Route index element={<MainLayout/>}></Route>
-          <Route path="/candidate" element={<Candidate/>} />
-          <Route path="/vote" element={<Voter/>} />
-          <Route path="/voteDone" element={<VoteDonePage/>} />
-          <Route path="/deploy" element={<Deploy deploy={deploy}/>} />
-          <Route path="/test" element={<Test methods ={VotingMethods}/>} />
+          <Route index element={<MainLayout />}></Route>
+          <Route path="/candidate" element={<Candidate />} />
+          <Route path="/vote" element={<Voter />} />
+          <Route path="/elected" element={<Elected />} />
+          <Route path="/voteDone" element={<VoteDonePage />} />
+          <Route path="/deploy" element={<Deploy deploy={deploy} />} />
+          <Route path="/test" element={<Test methods={VotingMethods} />} />
         </Route>
       </Routes>
     </>
   );
 }
 
-
-const Test = ({methods}) => {
+const Test = ({ methods }) => {
   useEffect(() => {
     methods.addCandidate("석훈", 32);
-  }, [])
-  
-  return (
-    <div>TEST</div>
-  )
-}
+  }, []);
 
+  return <div>TEST</div>;
+};
 
 export default App;

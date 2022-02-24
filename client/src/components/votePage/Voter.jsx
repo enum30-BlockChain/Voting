@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CandidateVote from "./CandidateVote";
 import "../votePage/css/voter.css";
+import { Link } from "react-router-dom";
 
 function Voter() {
   const [count, setCount] = useState([0, 0, 0, 0, 0]);
@@ -44,7 +45,9 @@ function Voter() {
       <button id="votepaper" onClick={handleOnclick}>
         투표
       </button>
-      <button>당선확인</button>
+      <Link to="/elected">
+        <button>당선확인</button>
+      </Link>
     </>
   );
 }
