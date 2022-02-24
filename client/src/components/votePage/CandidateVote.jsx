@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "../votePage/css/candidateVote.css";
 
-const CandidateVote = ({ id, name, count, setSeleted, ex }) => {
+const CandidateVote = ({ id, name, count, setSeleted }) => {
   const handleOnclick = (e) => {
     setSeleted(e.target.value);
-    console.log(ex);
   };
   const [views, setViews] = useState();
 
