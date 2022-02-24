@@ -44,18 +44,26 @@ const Test = ({ methods }) => {
   useEffect(async () => {
     const getResult = await methods.getCandidateList();
     setCandidateList(getResult);
-  }, []);
 
+
+    const myAccount = await methods.getSeletedAccount();
+    console.log(`myAccount: ${myAccount}`);
+  }, [])
+  
+  
   const handleOnClickAdd = () => {
     VotingMethods.addCandidate("진영", 30);
   };
 
   const handleOnClickGet = () => {
-    // methods.getCandidateList();
+    methods.getCandidateList();
     console.log(candidateList);
   };
   const handleOnClickReset = () => {
     methods.resetVoting();
+  };
+  const handleOnClickStop = () => {
+    methods.finishVoting();
   };
 
   return (
@@ -64,6 +72,7 @@ const Test = ({ methods }) => {
       <button onClick={handleOnClickAdd}>Add Candidate</button>
       <button onClick={handleOnClickGet}>Get Candidate List</button>
       <button onClick={handleOnClickReset}>Reset</button>
+      <button onClick={handleOnClickStop}>Stop</button>
     </>
   );
 };

@@ -15,17 +15,13 @@ function Voter() {
 
   const [seleted, setSeleted] = useState();
 
-  const handleOnclick = (e) => {
+  const handleOnclick = (selectedCandidate) => {
     if (candidates[seleted] !== 0) {
       const selectedCandidate = candidates[seleted];
       alert(selectedCandidate[0] + "투표하였습니다.");
       VotingMethods.voting(seleted);
       setCount(selectedCandidate[3]);
-      console.log(selectedCandidate);
-    }
-    for (let i = 5; i < candidates[3].length; i++) {
-      const votetotal = candidates[3][i];
-      console.log(votetotal);
+      // return console.log(selectedCandidate[3]);
     }
   };
 

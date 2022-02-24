@@ -1,20 +1,24 @@
 import { useEffect, useState } from "react";
 import VotingMethods from "../../votingContract/votingContract";
-import { Paper, TextField, Card, Button } from "@mui/material";
-// import { makeStyles } from "@mui/styles";
+import one from "./image/one.jpg";
+import two from "./image/two.jpg";
+import three from "./image/three.jpg";
+import four from "./image/four.jpg";
+import five from "./image/five.jpg";
 
 function Candidate() {
   const [name, setName] = useState("");
-  const [age, setAge] = useState();
+  const [age, setAge] = useState(0);
   const [number, setnumber] = useState(1);
   const [cadidate, setcadidate] = useState([]);
   const [voterAddress, setvoterAddress] = useState("");
+  const [image, setImage] = useState([one, two, three, four, five]);
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
   };
   const handleOnAgeChange = (e) => {
-    setAge(e.target.value);
+    setAge(Number(e.target.value));
   };
 
   const voterAddressOverlap = async () => {
@@ -37,69 +41,63 @@ function Candidate() {
         setnumber(number + 1);
         setAge("");
         setName("");
+        setImage("");
         console.log("후보자가 등록됩니다.");
       } else {
         return alert("5명이 넘어가요");
       }
     }
   };
-
-  // const useSlytles = makeStyles((theme) => ({
-  //   parpe: {
-  //     padding: theme.spacing(3),
-  //   },
-  // }));
+  const Transaction = async () => {
+    await VotingMethods.addCandidate(name, age);
+  };
 
   useEffect(async () => {
     setcadidate(await VotingMethods.getCandidateList());
-    setvoterAddress(await VotingMethods.selectedAccount());
+    setvoterAddress(await VotingMethods.getSeletedAccount());
   }, []);
 
   return (
     <>
-      <Paper elevation={3}>
-        <h3>후보자 등록</h3>
-        <div className="input-container">
-          <div className="input-name">
-            <h2>Name</h2>
-            <TextField
-              id="filled-basic"
-              label="Candidate Name"
-              variant="filled"
-              type="text"
-              placeholder="이름"
-              value={name}
-              onChange={handleOnNameChange}
-            ></TextField>
-          </div>
+      <div>
+        후보자 페이지
+        {/* <img src={one} alt="one.jpg" /> */}
+      </div>
+      <div className="input-container">
+        <div className="input-name">
+          <h2>이름</h2>
+          <input
+            type="text"
+            placeholder="이름"
+            value={name}
+            onChange={handleOnNameChange}
+          ></input>
         </div>
-        <div className="input-container">
-          <div className="input-age">
-            <h2>Age</h2>
-            <TextField
-              id="filled-basic"
-              label="Candidate Age"
-              variant="filled"
-              type="number"
-              placeholder="나이"
-              value={age}
-              onChange={handleOnAgeChange}
-            ></TextField>
-          </div>
+      </div>
+      <div className="input-container">
+        <div className="input-age">
+          <h2>나이</h2>
+          <input
+            type="number"
+            placeholder="나이"
+            value={age}
+            onChange={handleOnAgeChange}
+          ></input>
         </div>
+      </div>
 
-        <Button onClick={handleOnClick}>등록</Button>
-
-        <h3>후보자 목록</h3>
-        {cadidate.map((a, i) => {
-          return (
-            <Card elevation={3}>
-              순서:{i} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
-              주소{cadidate[i].account}
-            </Card>
-          );
-        })}
-      </Paper>
+      <button onClick={handleOnClick}>클라이언트등록 유효성검사</button>
+      <button onClick={Transaction}>트렌젝션으로 바로보내기</button>
+      <div>후보자리스트</div>
+      {cadidate.map((a, i) => {
+        return (
+          <div key={i}>
+            순서:{i + 1} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
+            주소{cadidate[i].account} 얼굴:
+            <img src={image[i]} />
+          </div>
+        );
+      })}
     </>
   );
 }

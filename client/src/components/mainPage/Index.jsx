@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import connectWallet from "connectWallet";
-// import CandidateInfo from "./CandidateInfo";
+import CandidateInfo from "./CandidateInfo";
 
 import "../mainPage/index.css";
 import * as React from "react";
@@ -19,7 +19,16 @@ const MainLayout = (e) => {
   const onClickConnectToWallet = () => {
     connectWallet();
   };
-  return <>hi</>;
+  return (
+    <>
+      <div className="menu"></div>
+      <div className="candidateList-container">
+        {candidateList.forEach((candidate) => (
+          <CandidateInfo info={candidate} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default MainLayout;
