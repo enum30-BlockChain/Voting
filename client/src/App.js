@@ -34,11 +34,26 @@ function App() {
 
 const Test = ({methods}) => {
   useEffect(() => {
-    methods.addCandidate("석훈", 32);
   }, [])
   
+  const handleOnClickAdd = () => {
+    methods.addCandidate("진영", 30);
+  }
+
+  const handleOnClickGet = () => {
+    methods.getCandidateList();
+  }
+  const handleOnClickReset = () => {
+    methods.resetVoting();
+  }
+
   return (
-    <div>TEST</div>
+    <>
+      <h1>TEST</h1>
+      <button onClick={handleOnClickAdd}>Add Candidate</button>
+      <button onClick={handleOnClickGet}>Get Candidate List</button>
+      <button onClick={handleOnClickReset}>Reset</button>
+    </>
   )
 }
 
