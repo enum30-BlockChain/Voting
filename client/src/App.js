@@ -12,9 +12,9 @@ import getWeb3 from "./getWeb3";
 import VotingMethods from "./votingContract/votingContract.js";
 
 function App() {
-  // useEffect(async () => {
-  //   const web3 = getWeb3();
-  // }, []);
+  useEffect(async () => {
+    const web3 = getWeb3();
+  }, []);
 
   return (
     <>
