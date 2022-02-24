@@ -3,7 +3,7 @@ import VotingMethods from "../../votingContract/votingContract";
 
 function Candidate() {
   const [name, setName] = useState("");
-  const [age, setAge] = useState();
+  const [age, setAge] = useState(0);
   const [number, setnumber] = useState(1);
   const [cadidate, setcadidate] = useState([]);
   const [voterAddress, setvoterAddress] = useState("");
