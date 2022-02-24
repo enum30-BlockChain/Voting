@@ -9,6 +9,7 @@ const provider = window.ethereum;
 const web3 = new Web3(provider);
 const contract = new web3.eth.Contract(ABI, contractAddress);
 
+// 컨트랙트 함수들 불러온 Class
 export default class VotingMethods {
   static getSeletedAccount = async () => {
     const selectedAccount = await web3.eth
@@ -89,11 +90,19 @@ export default class VotingMethods {
       .then(console.log);
   }
 
-  static getMaxVoteCounts = async () => {    
+  static getWinner = async () => {    
     contract.methods
-      .finishVoting()
+      .getWinner()
       .call()
       .then(console.log);
   }
-  
+
+  static setVoteCountsToWin = async (newVoteCountsToWin) => {
+    const selectedAccount = this.getSeletedAccount();
+    
+    contract.methods
+			.setVoteCountsToWin(newVoteCountsToWin)
+			.send({ from: selectedAccount, gas, gasPrice })
+			.then(console.log);
+  }
 }
