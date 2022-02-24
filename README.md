@@ -64,13 +64,7 @@
 ### database
 - `web-blockchain`          : @2.3
 
-### security
-- `crypto-js`       : @4.1
-- `merkle`          : @0.6
-- `jsonwebtoken`    : @8.5
-
 ### design
-- `react-bootstrap` : @2.1
 - `mui`             : @5.2
 <br>
 
