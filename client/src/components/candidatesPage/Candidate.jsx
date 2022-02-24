@@ -11,30 +11,30 @@ function Candidate() {
     setName(e.target.value);
   };
   const handleOnAgeChange = (e) => {
-    setAge(e.target.value);
+    setAge(Number(e.target.value));
   };
 
   const voterAddressOverlap = async () => {
     for (let i = 0; i < cadidate.length; i++) {
-      console.log(2222222222,cadidate[i].account)
-      console.log(voterAddress)
-      if(cadidate[i].account === voterAddress){
+      console.log(2222222222, cadidate[i].account);
+      console.log(voterAddress);
+      if (cadidate[i].account === voterAddress) {
         return false;
       }
-    } 
+    }
     return true;
-  }
+  };
 
-  const handleOnClick = async() => {
-    if (await voterAddressOverlap() === false ) {
-      return alert('후보자가 중복됩니다.')
-    }else{
+  const handleOnClick = async () => {
+    if ((await voterAddressOverlap()) === false) {
+      return alert("후보자가 중복됩니다.");
+    } else {
       if (number <= 5) {
-        VotingMethods.addCandidate(name,age);
+        VotingMethods.addCandidate(name, age);
         setnumber(number + 1);
         setAge("");
         setName("");
-        console.log('후보자가 등록됩니다.')
+        console.log("후보자가 등록됩니다.");
       } else {
         return alert("5명이 넘어가요");
       }
@@ -44,9 +44,9 @@ function Candidate() {
       await  VotingMethods.addCandidate(name,age);
   };
 
-  useEffect(async() => {
+  useEffect(async () => {
     setcadidate(await VotingMethods.getCandidateList());
-    setvoterAddress (await VotingMethods.getSeletedAccount());
+    setvoterAddress(await VotingMethods.getSeletedAccount());
   }, []);
 
   return (
@@ -80,8 +80,9 @@ function Candidate() {
       <div>후보자리스트</div>
       {cadidate.map((a, i) => {
         return (
-          <div>
-            순서:{i} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자 주소{cadidate[i].account}
+          <div key={i}>
+            순서:{i} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
+            주소{cadidate[i].account}
           </div>
         );
       })}
