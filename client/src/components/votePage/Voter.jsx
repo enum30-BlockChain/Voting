@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import VotingMethods from "../../votingContract/votingContract";
 
 function Voter() {
-  const [count, setCount] = useState([0, 0, 0, 0, 0]);
+  const [count, setCount] = useState(0);
   const [candidates, setCandidates] = useState([
     "철순",
     "진영",
@@ -14,18 +14,20 @@ function Voter() {
     "진황",
   ]);
 
-  useEffect(() => {
-    VotingMethods.getCandidateList();
+  useEffect(async () => {
+    const candidates = await VotingMethods.getCandidateList();
+    setCandidates(candidates);
   }, []);
 
   const [seleted, setSeleted] = useState();
 
   const handleOnclick = (e) => {
     if (candidates[seleted] !== 0) {
-      alert(candidates[seleted] + "투표하였습니다.");
-      const count2 = [...count];
-      count2[seleted] = count2[seleted] + 1;
-      setCount(count2);
+      const selectedCandidate = candidates[seleted];
+      alert(selectedCandidate[0] + "투표하였습니다.");
+      VotingMethods.voting(seleted);
+      setCount(selectedCandidate[3]);
+      console.log(selectedCandidate);
     }
   };
 
@@ -42,8 +44,8 @@ function Voter() {
         <CandidateVote
           id={index + 1}
           key={index}
-          name={candidate}
-          count={count[index]}
+          name={candidate[0]}
+          count={candidate[3]}
           setSeleted={setSeleted}
         />
       ))}
