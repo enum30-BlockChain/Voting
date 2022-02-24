@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-// import addCandidateMethod from "../../votingContract/addCandidate.js";
+import VotingMethods from "../../votingContract/votingContract";
 
-function Candidate(e) {
+function Candidate() {
   const [name, setName] = useState("");
   const [age, setAge] = useState();
   const [number, setnumber] = useState(1);
   const [cadidate, setcadidate] = useState([]);
+  const [voterAddress,setvoterAddress] = useState('');    
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
@@ -14,21 +15,37 @@ function Candidate(e) {
     setAge(e.target.value);
   };
 
-  const handleOnClick = () => {
-    // addCandidateMethod(name, age)
-    if (number <= 5) {
-      setnumber(number + 1);
-      cadidate.push({ num: number, name: name, age: age });
-      setAge("");
-      setName("");
-      console.log(cadidate);
-    } else {
-      return alert("5명이 넘어가요");
+  const voterAddressOverlap = async () => {
+    for (let i = 0; i < cadidate.length; i++) {
+      console.log(2222222222,cadidate[i].account)
+      console.log(voterAddress)
+      if(cadidate[i].account === voterAddress){
+        return false;
+      }
+    } 
+    return true;
+  }
+
+  const handleOnClick = async() => {
+    if (await voterAddressOverlap() === false ) {
+      return alert('후보자가 중복됩니다.')
+    }else{
+      if (number <= 5) {
+        VotingMethods.addCandidate(name,age);
+        setnumber(number + 1);
+        setAge("");
+        setName("");
+        console.log('후보자가 등록됩니다.')
+      } else {
+        return alert("5명이 넘어가요");
+      }
     }
   };
-  useEffect(() => {
-    console.log("후보등록중입니다.");
-  }, [e]);
+
+  useEffect(async() => {
+    setcadidate(await VotingMethods.getCandidateList());
+    setvoterAddress (await VotingMethods.selectedAccount());
+  }, []);
 
   return (
     <>
@@ -61,7 +78,7 @@ function Candidate(e) {
       {cadidate.map((a, i) => {
         return (
           <div>
-            순서:{a.num} 이름:{a.name}, 나이:{cadidate[i].age}{" "}
+            순서:{i} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자 주소{cadidate[i].account}
           </div>
         );
       })}
