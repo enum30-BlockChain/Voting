@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-// import addCandidateMethod from "../../votingContract/addCandidate.js";
+import VotingMethods from "../../votingContract/votingContract";
 
-function Candidate(e) {
+function Candidate() {
   const [name, setName] = useState("");
   const [age, setAge] = useState();
   const [number, setnumber] = useState(1);
@@ -18,17 +18,19 @@ function Candidate(e) {
     // addCandidateMethod(name, age)
     if (number <= 5) {
       setnumber(number + 1);
-      cadidate.push({ num: number, name: name, age: age });
+      // cadidate.push({ num: number, name: name, age: age });
+      VotingMethods.addCandidate(name,age);
       setAge("");
       setName("");
-      console.log(cadidate);
+      // console.log(cadidate);
     } else {
       return alert("5명이 넘어가요");
     }
   };
   useEffect(() => {
-    console.log("후보등록중입니다.");
-  }, [e]);
+    setcadidate(VotingMethods.getCandidateList());
+    console.log(cadidate)
+  }, []);
 
   return (
     <>
@@ -58,13 +60,13 @@ function Candidate(e) {
 
       <button onClick={handleOnClick}>등록</button>
       <div>후보자리스트</div>
-      {cadidate.map((a, i) => {
+      {/* {cadidate.map((a, i) => {
         return (
           <div>
             순서:{a.num} 이름:{a.name}, 나이:{cadidate[i].age}{" "}
           </div>
         );
-      })}
+      })} */}
     </>
   );
 }
