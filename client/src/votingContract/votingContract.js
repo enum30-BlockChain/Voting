@@ -44,7 +44,27 @@ export default class VotingMethods {
   };
 
   static getCandidateList = async () => {
-    return contract.methods.getCandidateList().call().then();
+    let candidateList;
+    await contract.methods
+      .getCandidateList()
+      .call()
+      .then((candidates) => {
+        console.log(`후보자 리스트 : ${candidates}`);
+        candidateList = candidates;
+      });
+    return candidateList;
+  };
+
+  static getDoneVoterList = async () => {
+    let doneVoterList;
+    await contract.methods
+      .getDoneVoterList()
+      .call()
+      .then((doneVoters) => {
+        console.log(`투표를 완료한 사람들 : ${doneVoters}`);
+        doneVoterList = doneVoters;
+      });
+    return doneVoterList;
   };
 
   static resetVoting = async () => {

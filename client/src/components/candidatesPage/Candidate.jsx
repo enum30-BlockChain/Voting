@@ -17,11 +17,13 @@ function Candidate() {
 
   const voterAddressOverlap = async () => {
     for (let i = 0; i < cadidate.length; i++) {
+      console.log(2222222222,cadidate[i].account)
+      console.log(voterAddress)
       if(cadidate[i].account === voterAddress){
         return false;
       }
-      return true;
     } 
+    return true;
   }
 
   const handleOnClick = async() => {

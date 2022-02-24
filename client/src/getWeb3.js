@@ -29,10 +29,13 @@ const getWeb3 = () =>
             console.log(`Seleted Network is ${currentChainId}`);
           });
 
-          // 선택한 지갑이 변경되면 바뀐 지갑 주소를 출력
+          // 선택한 지갑이 변경되면 바뀐 지갑 주소를 출력 1초 후 웹페이지 새로고침
           provider.on("accountsChanged", (accounts) => {
             selectedAccount = accounts[0];
             console.log(`Selected Account is ${selectedAccount}`);
+            setTimeout(() => {
+              window.location.reload();
+            }, 300);
           });
 
           // 네트워크가 변경되면 1초 후 웹페이지 새로고침
