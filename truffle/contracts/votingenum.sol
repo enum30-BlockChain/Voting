@@ -14,8 +14,8 @@ contract VotingEnum30{
   // mapping (key => value) 매핑이름
   mapping (address => bool) voterRight;
 
-  // 후보자 주소 => Candidate List에서의 인덱스
-  mapping (address => uint) candidateToIndex;
+  // 후보자 번호 => 후보자 주소
+  mapping (uint => address) candidateIndexToAddress;
 
   // 선행적으로 실행해야할 
   constructor () {
@@ -51,7 +51,7 @@ contract VotingEnum30{
     require(candidateList.length < 5);          // 대선 후보자 수가 5명 이하인지 확인
     candidateList.push(Candidate(_name, _age, msg.sender, 0)); // 대선 후보자 리스트에 새로운 후보자 추가
     uint index = candidateList.length - 1;
-    candidateToIndex[msg.sender] = index;
+    candidateIndexToAddress[index] = msg.sender;
   }
   // 함수 이전에 선행으로
   // 투표자의 투표 여부 확인
@@ -61,11 +61,10 @@ contract VotingEnum30{
   }
 
   // 후보자에게 투표 
-  function voting(address _candidateAccount) external voterRightCheck { 
-    uint index = candidateToIndex[_candidateAccount]; // 투표 주소를 통해서 투표 id 찾기
-    candidateList[index].voteCounts++;           // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
-    doneVoterList.push(msg.sender);           // 투표 완료한 사람을 배열에 추가
-    voterRight[msg.sender] = false;           // 투표 완료 
+  function voting(uint _candidateIndex) external voterRightCheck { 
+    candidateList[_candidateIndex].voteCounts++;  // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
+    doneVoterList.push(msg.sender);               // 투표 완료한 사람을 배열에 추가
+    voterRight[msg.sender] = false;               // 투표 완료 
   }
 
   // 후보자 리스트 불러오기
@@ -78,6 +77,11 @@ contract VotingEnum30{
     return doneVoterList;
   }
 
+
+  modifier isCreator() {
+    
+    _;
+  }
   // 태초마을로 돌아가!
   function resetVoting () external {
     delete candidateList;
