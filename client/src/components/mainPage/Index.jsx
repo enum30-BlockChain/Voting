@@ -19,7 +19,20 @@ const MainLayout = (e) => {
   const onClickConnectToWallet = () => {
     connectWallet();
   };
+<<<<<<< HEAD
   return <>hi</>;
+=======
+  return (
+    <>
+      <div className="menu"></div>
+      <div className="candidateList-container">
+        {candidateList.forEach((candidate) => (
+          <CandidateInfo info={candidate} />
+        ))}
+      </div>
+    </>
+  );
+>>>>>>> main
 };
 
 export default MainLayout;
