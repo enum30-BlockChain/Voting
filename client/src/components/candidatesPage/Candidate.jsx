@@ -5,6 +5,16 @@ import two from "./image/two.jpg";
 import three from "./image/three.jpg";
 import four from "./image/four.jpg";
 import five from "./image/five.jpg";
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+
+
+import "./Candidate.css";
 
 function Candidate() {
   const [name, setName] = useState("");
@@ -23,7 +33,7 @@ function Candidate() {
 
   const voterAddressOverlap = async () => {
     for (let i = 0; i < cadidate.length; i++) {
-      console.log(2222222222, cadidate[i].account);
+      console.log(cadidate[i].account);
       console.log(voterAddress);
       if (cadidate[i].account === voterAddress) {
         return false;
@@ -58,48 +68,82 @@ function Candidate() {
   }, []);
 
   return (
-    <>
-      <div>
-        후보자 페이지
-        {/* <img src={one} alt="one.jpg" /> */}
-      </div>
-      <div className="input-container">
-        <div className="input-name">
-          <h2>이름</h2>
-          <input
-            type="text"
-            placeholder="이름"
-            value={name}
-            onChange={handleOnNameChange}
-          ></input>
-        </div>
-      </div>
-      <div className="input-container">
-        <div className="input-age">
-          <h2>나이</h2>
-          <input
-            type="number"
-            placeholder="나이"
-            value={age}
-            onChange={handleOnAgeChange}
-          ></input>
-        </div>
-      </div>
-
-      <button onClick={handleOnClick}>클라이언트등록 유효성검사</button>
-      <button onClick={Transaction}>트렌젝션으로 바로보내기</button>
-      <div>후보자리스트</div>
-      {cadidate.map((a, i) => {
-        return (
-          <div key={i}>
-            순서:{i + 1} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
-            주소{cadidate[i].account} 얼굴:
-            <img src={image[i]} />
+		<div className="candidate-component">
+      <div className="add-form">
+        <h1>후보자 등록 페이지</h1>
+        <div className="input-container">
+          <div className="input-name">
+            <h2>이름</h2>
+            <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+              type="text"
+              placeholder="이름"
+              value={name}
+              onChange={handleOnNameChange}
+            />
           </div>
-        );
-      })}
-    </>
-  );
+          <div className="input-age">
+            <h2>나이</h2>
+            <TextField
+              id="outlined-basic"
+              label="Outlined"
+              variant="outlined"
+              type="number"
+              placeholder="나이"
+              value={age}
+              onChange={handleOnAgeChange}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="button-group">
+        <Button variant="contained" onClick={handleOnClick}>클라이언트등록 유효성검사</Button>
+        <Button variant="contained" onClick={Transaction}>트렌젝션으로 바로보내기</Button>
+      </div>
+      <div className="candidateList-container">
+        <h3>후보자리스트</h3>
+        <div className="candidateCard-wrap">
+          {cadidate.map((a, i) => (
+            <CandidateCard
+              key={i}
+              index={i}
+              name={cadidate[i].name}
+              age={cadidate[i].age}
+              account={cadidate[i].account}
+              image={image}
+            />
+          ))}
+        </div>
+      </div>
+		</div>
+	);
 }
+
+const CandidateCard = ({index, name, age, account, image}) => {
+  return (
+		<div className="candidateCard-container">
+			<Card sx={{ maxWidth: 400, height: 400}}>
+				<CardContent>
+					<Typography sx={{ fontSize: 20 }} color="orange" gutterBottom>
+						기호 {index+1} 번
+					</Typography>
+					<Typography variant="h5" component="div">
+						{name}
+					</Typography>
+					<Typography color="text.secondary" >
+            나이 : {age}
+					</Typography>
+					<Typography variant="body2" className="candidateCard-account">
+            {account}
+					</Typography>
+          <img src={image[index]} alt={name} />
+				</CardContent>
+			</Card>
+		</div>
+	);
+}
+
 
 export default Candidate;
