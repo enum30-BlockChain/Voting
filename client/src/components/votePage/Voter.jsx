@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CandidateVote from "./CandidateVote";
 import "../votePage/css/voter.css";
 import { Link } from "react-router-dom";
+import VotingMethods from "../../votingContract/votingContract";
 
 function Voter() {
   const [count, setCount] = useState([0, 0, 0, 0, 0]);
@@ -12,6 +13,11 @@ function Voter() {
     "석훈",
     "진황",
   ]);
+
+  useEffect(() => {
+    VotingMethods.getCandidateList();
+  }, []);
+
   const [seleted, setSeleted] = useState();
 
   const handleOnclick = (e) => {
