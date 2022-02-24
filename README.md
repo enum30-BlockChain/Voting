@@ -1,5 +1,5 @@
 # Enum30
-> 프로젝트 기간 : 
+> 프로젝트 기간 : 22.02.18~02.25
 
 
 ## 협업 Tool
@@ -13,11 +13,14 @@
 <br>
 
 # 1. 기획 의도
-- 
+- 여러노드들의 블록체인 트랜잭션 공유 및 Gas or Eth를 사용한 암호 및 보안
 <br>
 
 # 2. 프로젝트 목표
-- 
+1. 후보자 등록(금액 소모), 최대 5명
+2. 5명이 차야 투표 시작
+3. 참여자들 투표권은 한 표
++ 등록된 후보 이름으로 크립토 좀비나 크립토 키티 이미지 출력
 <br>
 
 
@@ -33,26 +36,22 @@
 ## 4-1. 🛠 Tools
 ### 📢 For Team Communication
 - `Discord`
-- `Notion`
-- `Github`
+- `Github` => Issues[open, close] / Projects(memo)
 ### ⚙ For Development
-- `Ubuntu-20.04`
+- `Cmd git`
 - `VScode`
+- `Remix.ethereum`
+- `Ganache`
+- `MetaMask`
 <br>
 
 ## 4-2. 📚 Languages & Frameworks
 ### Front-end
 - `React`
 - `Javascript`
-- `TypeScript`
 ### Back-end
 - `NodeJS`
-- `express`
-- `MySQL`
-- `MariaDB`
 - `Solidity`
-### Test-Tool
-- `Jest`
 <br>
 
 ## 4-3. 🛒 Library
@@ -60,21 +59,22 @@
 - `express`         : @4.17
 
 ### router
-- `axios`           : @0.24
+- `web`           : @0.24 <= "assert",
+    "buffer","crypto-browserify","https-browserify","os-browserify","process","react-app-rewired",
+    "stream-browserify","stream-http","url""
 - `react-router-dom`: @6
 
 ### database
-- `mysql2`          : @2.3
-
-### security
-- `crypto-js`       : @4.1
-- `merkle`          : @0.6
-- `jsonwebtoken`    : @8.5
+- `web-blockchain`          : @2.3
 
 ### design
-- `react-bootstrap` : @2.1
 - `mui`             : @5.2
 <br>
 
-# 5. 
+# 5. Flow Chart
+![image](https://user-images.githubusercontent.com/89626182/155558060-4b576ae3-5e0f-495c-b315-c7f484b32bad.png)
+
+# 6. Structure Chart
+![image](https://user-images.githubusercontent.com/89626182/155558558-bac913d7-f8dd-4e80-902d-d30ae8b0131f.png)
+
 

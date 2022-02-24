@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 import VotingMethods from "../../votingContract/votingContract";
+import one from "./image/one.jpg";
+import two from "./image/two.jpg";
+import three from "./image/three.jpg";
+import four from "./image/four.jpg";
+import five from "./image/five.jpg";
 
 function Candidate() {
   const [name, setName] = useState("");
@@ -7,6 +12,7 @@ function Candidate() {
   const [number, setnumber] = useState(1);
   const [cadidate, setcadidate] = useState([]);
   const [voterAddress, setvoterAddress] = useState("");
+  const [image, setImage] = useState([one, two, three, four, five]);
 
   const handleOnNameChange = (e) => {
     setName(e.target.value);
@@ -35,11 +41,15 @@ function Candidate() {
         setnumber(number + 1);
         setAge("");
         setName("");
+        setImage("");
         console.log("후보자가 등록됩니다.");
       } else {
         return alert("5명이 넘어가요");
       }
     }
+  };
+  const Transaction = async () => {
+    await VotingMethods.addCandidate(name, age);
   };
 
   useEffect(async () => {
@@ -49,7 +59,10 @@ function Candidate() {
 
   return (
     <>
-      <div>후보자 페이지</div>
+      <div>
+        후보자 페이지
+        {/* <img src={one} alt="one.jpg" /> */}
+      </div>
       <div className="input-container">
         <div className="input-name">
           <h2>이름</h2>
@@ -73,13 +86,15 @@ function Candidate() {
         </div>
       </div>
 
-      <button onClick={handleOnClick}>등록</button>
+      <button onClick={handleOnClick}>클라이언트등록 유효성검사</button>
+      <button onClick={Transaction}>트렌젝션으로 바로보내기</button>
       <div>후보자리스트</div>
       {cadidate.map((a, i) => {
         return (
           <div key={i}>
             순서:{i + 1} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
-            주소{cadidate[i].account}
+            주소{cadidate[i].account} 얼굴:
+            <img src={image[i]} />
           </div>
         );
       })}
