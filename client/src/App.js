@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import getWeb3 from "./getWeb3";
 import VotingMethods from "./votingContract/votingContract.js";
+import Appbar from "../src/components/landingPage/navbar.jsx";
 
 function App() {
   useEffect(async () => {
@@ -18,10 +19,14 @@ function App() {
 
   return (
     <>
+      <Appbar></Appbar>
       <Routes>
         <Route path="/">
           <Route index element={<MainLayout />}></Route>
-          <Route path="/candidate" element={<Candidate methods={VotingMethods}/>} />
+          <Route
+            path="/candidate"
+            element={<Candidate methods={VotingMethods} />}
+          />
           <Route path="/vote" element={<Voter />} />
           <Route path="/elected" element={<Elected />} />
           <Route path="/voteDone" element={<VoteDonePage />} />
@@ -39,20 +44,24 @@ const Test = ({ methods }) => {
   useEffect(async () => {
     const getResult = await methods.getCandidateList();
     setCandidateList(getResult);
+
+
+    const myAccount = await methods.getSeletedAccount();
+    console.log(`myAccount: ${myAccount}`);
   }, [])
   
   
   const handleOnClickAdd = () => {
     VotingMethods.addCandidate("진영", 30);
-  }
+  };
 
   const handleOnClickGet = () => {
-    // methods.getCandidateList();
+    methods.getCandidateList();
     console.log(candidateList);
-  }
+  };
   const handleOnClickReset = () => {
     methods.resetVoting();
-  }
+  };
 
   return (
     <>
@@ -61,8 +70,7 @@ const Test = ({ methods }) => {
       <button onClick={handleOnClickGet}>Get Candidate List</button>
       <button onClick={handleOnClickReset}>Reset</button>
     </>
-  )
-}
-
+  );
+};
 
 export default App;
