@@ -3,7 +3,12 @@ pragma solidity >=0.5.0 <0.9.0;
 
 contract VotingEnum30{
   uint addCandidateFee = 0.01 ether;
-  address creator = 0x3F39cfbAFf46cB736A603269d14a7e9AdF5158B4;
+
+  // 당선될 투표 수 설정 => 기본값 3
+  uint defaultVoteCountToWin = 3;
+  uint voteCountToWin = defaultVoteCountToWin;
+
+  address owner = 0x3F39cfbAFf46cB736A603269d14a7e9AdF5158B4;
 
   // 투표 상태 변수들
   enum VotingState {
@@ -11,7 +16,7 @@ contract VotingEnum30{
     FINISHED
   }
 
-  // 투표 활성화 상태 기본값 설정 => CONTINUE
+  // 투표 활성화 상태 설정 => 기본값 : CONTINUE
   VotingState constant defaultVotingState = VotingState.CONTINUE;
   VotingState currentState = defaultVotingState;
 
@@ -42,7 +47,6 @@ contract VotingEnum30{
   // 투표를 완료한 사람의 주소를 모아두는 배열
   address[] private doneVoterList;
 
-
   // 후보자를 추가해주는 함수
   function addCandidate(string memory _name, uint8 _age) external payable hasVotingFinished {
     require(msg.value == addCandidateFee);
@@ -69,9 +73,18 @@ contract VotingEnum30{
     _;
   }
 
+  // 당선자 투표수 설정하는 함수
+  function setVoteCountsToWin (uint _newVoteCountToWin) external onlyOwner {
+    voteCountToWin = _newVoteCountToWin;
+  }
+
   // 후보자에게 투표 
   function voting(uint _candidateIndex) external voterRightCheck hasVotingFinished { 
-    candidateList[_candidateIndex].voteCounts++;  // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
+    Candidate memory selectCandidate = candidateList[_candidateIndex];
+    selectCandidate.voteCounts++;  // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
+    if(selectCandidate.voteCounts >= voteCountToWin) {
+      currentState = VotingState.FINISHED;
+    }
     doneVoterList.push(msg.sender);               // 투표 완료한 사람을 배열에 추가
     hasVoteDone[msg.sender] = true;               // 투표 완료 
   }
@@ -93,17 +106,19 @@ contract VotingEnum30{
     }
   }
 
-  modifier onlyCreator {
-    require(msg.sender == creator);
+  // 컨트랙트 소유자인지 확인
+  modifier onlyOwner {
+    require(msg.sender == owner);
     _;
   }
 
   // 태초마을로 돌아가!
-  function resetVoting () external {
+  function resetVoting () external onlyOwner {
     resetVoteRight();
     delete candidateList;
     delete doneVoterList;
     currentState = defaultVotingState;  // 투표 상태를 초기값으로 변경
+    voteCountToWin = defaultVoteCountToWin;
   }
   
   // 현재 투표 활성화 상태 체크
@@ -113,22 +128,7 @@ contract VotingEnum30{
   }
 
   // 투표 끝내기
-  function finishVoting() external {
+  function finishVoting() external onlyOwner {
     currentState = VotingState.FINISHED; // 투표 상태를 끝내기로 변환
-  }
-
-  // 후보자 중에 제일 득표수가 많은 사람 찾기
-  function getMaxVoteCounts () external view returns (uint8) {
-    uint8 maxNum;
-    for (uint256 i = 0; i < candidateList.length - 1; i++) {
-      uint8 currentOne = candidateList[i].voteCounts;
-      uint8 nextOne = candidateList[i+1].voteCounts;
-      if(currentOne >= nextOne ) {
-        maxNum = currentOne;
-      } else {
-        maxNum = nextOne;
-      }
-    }
-    return maxNum;
   }
 }
