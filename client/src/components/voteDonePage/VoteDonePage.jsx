@@ -4,9 +4,12 @@ import VotingMethods from "votingContract/votingContract";
 function VoteDonePage() {
   const [selectedAccounts, setSelectedAccounts] = useState([]);
 
-  useEffect(async () => {
-    const selectedAccount = await VotingMethods.getDoneVoterList();
-    setSelectedAccounts(selectedAccount);
+  useEffect( () => {
+    const init = async () => {
+      const selectedAccount = await VotingMethods.getDoneVoterList();
+      setSelectedAccounts(selectedAccount);
+    }
+    init()
   }, []);
 
   return (
@@ -14,7 +17,7 @@ function VoteDonePage() {
       <h2>투표완료자 목록</h2>
       {selectedAccounts.map((selectedAccount, i) => {
         return (
-          <ul>
+          <ul key={i}>
             <li>{selectedAccount}</li>
           </ul>
         );
