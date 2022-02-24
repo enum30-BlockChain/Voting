@@ -77,7 +77,7 @@ function Candidate() {
       <div>후보자리스트</div>
       {cadidate.map((a, i) => {
         return (
-          <div>
+          <div key={i}>
             순서:{i} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
             주소{cadidate[i].account}
           </div>
