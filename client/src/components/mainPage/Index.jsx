@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import connectWallet from "connectWallet";
 import CandidateInfo from "./CandidateInfo";
 
+import * as React from "react";
+
 export { default as Candidate } from "../candidatesPage/Candidate";
 export { default as Voter } from "../votePage/Voter";
 export { default as Elected } from "../elected/Elected";
@@ -15,20 +17,10 @@ const MainLayout = (e) => {
 
   const onClickConnectToWallet = () => {
     connectWallet();
-  }
+  };
   return (
     <>
-      <div className="menu">
-        <Link to="/candidate">
-          <button>candidate</button>
-        </Link>
-        <Link to="/vote">
-          <button>vote</button>
-        </Link>
-        <Link to="/elected">
-          <button>Eleted</button>
-        </Link>
-      </div>
+      <div className="menu"></div>
 
       <div>메인페이지입니다.</div>
       <div className="candidateList-container">
@@ -36,7 +28,7 @@ const MainLayout = (e) => {
           <CandidateInfo info={candidate} />
         ))}
       </div>
-      
+
       <button>후보자등록페이지이동</button>
       <button>투표하로가기</button>
       <button onClick={onClickConnectToWallet}>지갑 연결하기</button>
