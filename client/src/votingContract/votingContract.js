@@ -35,4 +35,20 @@ export default class VotingMethods {
       .send({ from: selectedAccount, gas, gasPrice })
       .then(console.log);
   };
+  
+  static getCandidateList = async () => {
+    contract.methods.getCandidateList().call().then(console.log);
+  }
+
+  static resetVoting = async () => {
+    // 현재 선택된 내 지갑 주소 불러오기 
+    const selectedAccount = await web3.eth
+      .getAccounts()
+      .then((accounts) => accounts[0]);
+
+    contract.methods
+      .resetVoting()
+      .send({ from: selectedAccount, gas, gasPrice })
+      .then(console.log);
+  }
 }

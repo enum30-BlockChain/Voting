@@ -12,9 +12,9 @@ import getWeb3 from "./getWeb3";
 import VotingMethods from "./votingContract/votingContract.js";
 
 function App() {
-  useEffect(async () => {
-    const web3 = getWeb3();
-  }, []);
+  // useEffect(async () => {
+  //   const web3 = getWeb3();
+  // }, []);
 
   return (
     <>
@@ -35,8 +35,28 @@ function App() {
 
 const Test = ({ methods }) => {
   useEffect(() => {
-    methods.addCandidate("석훈", 32);
-  }, []);
+  }, [])
+  
+  const handleOnClickAdd = () => {
+    methods.addCandidate("진영", 30);
+  }
+
+  const handleOnClickGet = () => {
+    methods.getCandidateList();
+  }
+  const handleOnClickReset = () => {
+    methods.resetVoting();
+  }
+
+  return (
+    <>
+      <h1>TEST</h1>
+      <button onClick={handleOnClickAdd}>Add Candidate</button>
+      <button onClick={handleOnClickGet}>Get Candidate List</button>
+      <button onClick={handleOnClickReset}>Reset</button>
+    </>
+  )
+}
 
   return <div>TEST</div>;
 };
