@@ -29,6 +29,7 @@ export default class VotingMethods {
         from: selectedAccount,
         value: web3.utils.toWei("0.01", "ether"),
         gas: gas,
+        gasPrice
       })
       .then(console.log);
   };
@@ -71,7 +72,7 @@ export default class VotingMethods {
 
   static resetVoting = async () => {
     // 현재 선택된 내 지갑 주소 불러오기 
-    const selectedAccount = await this.getSeletedAccount
+    const selectedAccount = await this.getSeletedAccount();
 
     contract.methods
       .resetVoting()
