@@ -58,7 +58,5 @@ const Test = ({ methods }) => {
   )
 }
 
-  return <div>TEST</div>;
-};
 
 export default App;
