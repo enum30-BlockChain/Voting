@@ -8,7 +8,7 @@ import deploy from "deploy";
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-// import getWeb3 from "./getWeb3";
+import getWeb3 from "./getWeb3";
 import VotingMethods from "./votingContract/votingContract.js";
 import Appbar from "../src/components/landingPage/navbar.jsx";
 
