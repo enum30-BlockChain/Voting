@@ -10,11 +10,17 @@ const web3 = new Web3(provider);
 const contract = new web3.eth.Contract(ABI, contractAddress);
 
 export default class VotingMethods {
-  // 현재 선택된 내 지갑 주소 불러오기 
-  static addCandidate = async (_name, _age) => {
+  static getSeletedAccount = async () => {
     const selectedAccount = await web3.eth
       .getAccounts()
       .then((accounts) => accounts[0]);
+
+    return selectedAccount;
+  }
+
+  // 현재 선택된 내 지갑 주소 불러오기 
+  static addCandidate = async (_name, _age) => {
+    const selectedAccount = await this.getSeletedAccount();
 
     // addCandidate 함수 트랜잭션으로 보내기
     contract.methods
@@ -26,9 +32,7 @@ export default class VotingMethods {
   // 
   static voting = async (_candidateName) => {
     // 현재 선택된 내 지갑 주소 불러오기 
-    const selectedAccount = await web3.eth
-      .getAccounts()
-      .then((accounts) => accounts[0]);
+    const selectedAccount = await this.getSeletedAccount();
 
     // addCandidate 함수 트랜잭션으로 보내기
     contract.methods
@@ -57,9 +61,7 @@ export default class VotingMethods {
 
   static resetVoting = async () => {
     // 현재 선택된 내 지갑 주소 불러오기 
-    const selectedAccount = await web3.eth
-      .getAccounts()
-      .then((accounts) => accounts[0]);
+    const selectedAccount = await this.getSeletedAccount
 
     contract.methods
       .resetVoting()
