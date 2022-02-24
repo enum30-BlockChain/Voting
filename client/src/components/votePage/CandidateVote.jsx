@@ -1,30 +1,45 @@
-import { useState } from "react";
 import "../votePage/css/candidateVote.css";
 
-const CandidateVote = ({ id, name, count, setSeleted }) => {
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+
+
+const CandidateVote = ({ index, name, age, account, count, image, setSeleted }) => {
   const handleOnclick = (e) => {
     setSeleted(e.target.value);
   };
-  const [views, setViews] = useState();
 
   return (
     <>
-      <div className="candidateVote-container">
-        <div className="candidate-num">{id + "번"}</div>
-        <div className="candidate-name">{name}</div>
-        <div>
-          <input
-            type="radio"
-            name="voted"
-            value={id - 1}
-            onClick={handleOnclick}
-          />
-        </div>
-        <div className="candidate-count">{count}</div>
+      <div className="candidateCard-container">
+        <Card sx={{ maxWidth: 400, height: 400}}>
+          <CardContent>
+            <Typography sx={{ fontSize: 20 }} color="orange" gutterBottom>
+              기호 {index+1} 번
+            </Typography>
+            <Typography variant="h5" component="div">
+              {name}
+            </Typography>
+            <Typography color="text.secondary" >
+              나이 : {age}
+            </Typography>
+            <Typography variant="body2" className="candidateCard-account">
+              {account}
+            </Typography>
+            <img src={image[index]} alt={name} />
+          </CardContent>
+          <div className="candidateCard-footer">
+            <input
+              type="radio"
+              name="voted"
+              value={index}
+              onClick={handleOnclick}
+            />
+            <div>득표수 : {count}</div>
+          </div>
+        </Card>
       </div>
-      {/* {views.map((name, index) => (
-        <Elected name={name} ex={2} />
-      ))} */}
     </>
   );
 };

@@ -5,16 +5,12 @@ import two from "./image/two.jpg";
 import three from "./image/three.jpg";
 import four from "./image/four.jpg";
 import five from "./image/five.jpg";
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 
 
 import "./Candidate.css";
+import CandidateCard from "./CandidateCard";
 
 function Candidate() {
   const [name, setName] = useState("");
@@ -62,9 +58,12 @@ function Candidate() {
     await VotingMethods.addCandidate(name, age);
   };
 
-  useEffect(async () => {
-    setcadidate(await VotingMethods.getCandidateList());
-    setvoterAddress(await VotingMethods.getSeletedAccount());
+  useEffect(() => {
+    const init = async () => {
+      setcadidate(await VotingMethods.getCandidateList());
+      setvoterAddress(await VotingMethods.getSeletedAccount());
+    }
+    init();
   }, []);
 
   return (
@@ -117,30 +116,6 @@ function Candidate() {
           ))}
         </div>
       </div>
-		</div>
-	);
-}
-
-const CandidateCard = ({index, name, age, account, image}) => {
-  return (
-		<div className="candidateCard-container">
-			<Card sx={{ maxWidth: 400, height: 400}}>
-				<CardContent>
-					<Typography sx={{ fontSize: 20 }} color="orange" gutterBottom>
-						기호 {index+1} 번
-					</Typography>
-					<Typography variant="h5" component="div">
-						{name}
-					</Typography>
-					<Typography color="text.secondary" >
-            나이 : {age}
-					</Typography>
-					<Typography variant="body2" className="candidateCard-account">
-            {account}
-					</Typography>
-          <img src={image[index]} alt={name} />
-				</CardContent>
-			</Card>
 		</div>
 	);
 }
