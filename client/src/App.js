@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<MainLayout />}></Route>
-          <Route path="/candidate" element={<Candidate />} />
+          <Route path="/candidate" element={<Candidate methods={VotingMethods}/>} />
           <Route path="/vote" element={<Voter />} />
           <Route path="/elected" element={<Elected />} />
           <Route path="/voteDone" element={<VoteDonePage />} />
@@ -38,7 +38,7 @@ const Test = ({ methods }) => {
   }, [])
   
   const handleOnClickAdd = () => {
-    methods.addCandidate("진영", 30);
+    VotingMethods.addCandidate("진영", 30);
   }
 
   const handleOnClickGet = () => {
