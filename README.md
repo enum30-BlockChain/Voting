@@ -13,11 +13,11 @@
 <br>
 
 # 1. 기획 의도
-- 
+- 여러노드들의 블록체인 트랜잭션 공유 및 Gas or Eth를 사용한 암호 및 보안
 <br>
 
 # 2. 프로젝트 목표
-- 
+- 블록체인기술을 베이스로한 투표페이지 개발 및 시각
 <br>
 
 
@@ -76,7 +76,10 @@
 - `mui`             : @5.2
 <br>
 
-# 5. 구성도
+# 5. Flow Chart
 ![image](https://user-images.githubusercontent.com/89626182/155558060-4b576ae3-5e0f-495c-b315-c7f484b32bad.png)
+
+# 6. Structure Chart
+![image](https://user-images.githubusercontent.com/89626182/155558558-bac913d7-f8dd-4e80-902d-d30ae8b0131f.png)
 
 
