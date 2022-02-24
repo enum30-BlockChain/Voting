@@ -1,10 +1,15 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import CandidateInfo from "./CandidateInfo";
 
 export { default as Candidate } from "../candidatesPage/Candidate";
 export { default as Voter } from "../votePage/Voter";
 
-const MainLayout = () => {
+const MainLayout = (e) => {
   const candidateList = [];
+  useEffect(() => {
+    console.log("투표소에 도착했습니다.");
+  }, [e]);
 
   return (
     <>
@@ -15,8 +20,12 @@ const MainLayout = () => {
         ))}
       </div>
 
-      <button>후보자등록페이지이동</button>
-      <button>투표하로가기</button>
+      <Link to="/candidate">
+        <button>후보자등록페이지이동</button>
+      </Link>
+      <Link to="/vote">
+        <button>후보자등록페이지이동</button>
+      </Link>
     </>
   );
 };

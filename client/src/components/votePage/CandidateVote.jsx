@@ -1,5 +1,4 @@
-import React from "react";
-import "./candidateVote.css";
+import "../votePage/css/candidateVote.css";
 
 const CandidateVote = ({ id, name, count, setSeleted }) => {
   const handleOnclick = (e) => {

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import addCandidateMethod from "../../votingContract/addCandidate.js";
 
-function Candidate() {
+function Candidate(e) {
   const [name, setName] = useState("");
   const [age, setAge] = useState();
   const [number, setnumber] = useState(1);
@@ -26,6 +26,9 @@ function Candidate() {
       return alert("5명이 넘어가요");
     }
   };
+  useEffect(() => {
+    console.log("후보등록중입니다.");
+  }, [e]);
 
   return (
     <>
