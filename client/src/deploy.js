@@ -2,7 +2,7 @@ import getWeb3 from "getWeb3";
 import votingContractInfo from "./votingContract/votingContract.json";
 
 const gas = "2";  // Mwei
-const gasPrice = "10";  //Gwei
+const gasPrice = "15";  //Gwei
 
 const deploy = async () => {
   const ABI = votingContractInfo.abi;

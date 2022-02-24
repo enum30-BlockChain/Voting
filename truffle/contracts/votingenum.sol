@@ -8,7 +8,7 @@ contract VotingEnum30{
   uint defaultVoteCountToWin = 3;
   uint voteCountToWin = defaultVoteCountToWin;
 
-  address owner = 0x3F39cfbAFf46cB736A603269d14a7e9AdF5158B4;
+  address owner;
 
   // 투표 상태 변수들
   enum VotingState {
@@ -39,10 +39,14 @@ contract VotingEnum30{
   Candidate private nullWinner = Candidate("", 0, address(0), 0);
   Candidate winner = nullWinner;
 
-  // 선행적으로 실행해야할 
+  // 처음 배포될 때만 실행되는 함수 
   constructor () {
-    currentState = defaultVotingState;
-    winner = nullWinner;
+    owner = msg.sender;
+  }
+
+  // 현재 컨트랙트의 잔액을 Owner에게 전송
+  function withdraw() external onlyOwner {
+    payable(owner).transfer(address(this).balance);
   }
 
   // 후보자 배열 (동적/정적 차이 확인하고 다시 선언하기)
