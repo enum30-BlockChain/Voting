@@ -7,7 +7,6 @@ function Candidate() {
   const [number, setnumber] = useState(1);
   const [cadidate, setcadidate] = useState([]);
   const [voterAddress,setvoterAddress] = useState('');    
-
   const handleOnNameChange = (e) => {
     setName(e.target.value);
   };
