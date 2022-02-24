@@ -41,6 +41,9 @@ function Candidate() {
       }
     }
   };
+  const Transaction = async() => {
+      await  VotingMethods.addCandidate(name,age);
+  };
 
   useEffect(async() => {
     setcadidate(await VotingMethods.getCandidateList());
@@ -73,7 +76,8 @@ function Candidate() {
         </div>
       </div>
 
-      <button onClick={handleOnClick}>등록</button>
+      <button onClick={handleOnClick}>클라이언트등록 유효성검사</button>
+      <button onClick={Transaction}>트렌젝션으로 바로보내기</button>
       <div>후보자리스트</div>
       {cadidate.map((a, i) => {
         return (
