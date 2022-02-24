@@ -63,7 +63,7 @@ const Test = ({ methods }) => {
     methods.resetVoting();
   };
   const handleOnClickStop = () => {
-    methods.resetVoting();
+    methods.finishVoting();
   };
 
   return (
