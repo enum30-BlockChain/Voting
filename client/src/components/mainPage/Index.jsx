@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import connectWallet from "connectWallet";
-import CandidateInfo from "./CandidateInfo";
+// import CandidateInfo from "./CandidateInfo";
 
+import "../mainPage/index.css";
 import * as React from "react";
 
 export { default as Candidate } from "../candidatesPage/Candidate";
@@ -18,22 +19,7 @@ const MainLayout = (e) => {
   const onClickConnectToWallet = () => {
     connectWallet();
   };
-  return (
-    <>
-      <div className="menu"></div>
-
-      <div>메인페이지입니다.</div>
-      <div className="candidateList-container">
-        {candidateList.forEach((candidate) => (
-          <CandidateInfo info={candidate} />
-        ))}
-      </div>
-
-      <button>후보자등록페이지이동</button>
-      <button>투표하로가기</button>
-      <button onClick={onClickConnectToWallet}>지갑 연결하기</button>
-    </>
-  );
+  return <>hi</>;
 };
 
 export default MainLayout;

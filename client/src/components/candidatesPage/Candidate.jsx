@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import VotingMethods from "../../votingContract/votingContract";
+import { Paper, TextField, Card, Button } from "@mui/material";
+// import { makeStyles } from "@mui/styles";
 
 function Candidate() {
   const [name, setName] = useState("");
@@ -42,6 +44,12 @@ function Candidate() {
     }
   };
 
+  // const useSlytles = makeStyles((theme) => ({
+  //   parpe: {
+  //     padding: theme.spacing(3),
+  //   },
+  // }));
+
   useEffect(async () => {
     setcadidate(await VotingMethods.getCandidateList());
     setvoterAddress(await VotingMethods.selectedAccount());
@@ -49,40 +57,49 @@ function Candidate() {
 
   return (
     <>
-      <div>후보자 페이지</div>
-      <div className="input-container">
-        <div className="input-name">
-          <h2>이름</h2>
-          <input
-            type="text"
-            placeholder="이름"
-            value={name}
-            onChange={handleOnNameChange}
-          ></input>
-        </div>
-      </div>
-      <div className="input-container">
-        <div className="input-age">
-          <h2>나이</h2>
-          <input
-            type="number"
-            placeholder="나이"
-            value={age}
-            onChange={handleOnAgeChange}
-          ></input>
-        </div>
-      </div>
-
-      <button onClick={handleOnClick}>등록</button>
-      <div>후보자리스트</div>
-      {cadidate.map((a, i) => {
-        return (
-          <div>
-            순서:{i} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
-            주소{cadidate[i].account}
+      <Paper elevation={3}>
+        <h3>후보자 등록</h3>
+        <div className="input-container">
+          <div className="input-name">
+            <h2>Name</h2>
+            <TextField
+              id="filled-basic"
+              label="Candidate Name"
+              variant="filled"
+              type="text"
+              placeholder="이름"
+              value={name}
+              onChange={handleOnNameChange}
+            ></TextField>
           </div>
-        );
-      })}
+        </div>
+        <div className="input-container">
+          <div className="input-age">
+            <h2>Age</h2>
+            <TextField
+              id="filled-basic"
+              label="Candidate Age"
+              variant="filled"
+              type="number"
+              placeholder="나이"
+              value={age}
+              onChange={handleOnAgeChange}
+            ></TextField>
+          </div>
+        </div>
+
+        <Button onClick={handleOnClick}>등록</Button>
+
+        <h3>후보자 목록</h3>
+        {cadidate.map((a, i) => {
+          return (
+            <Card elevation={3}>
+              순서:{i} 이름:{cadidate[i].name}, 나이:{cadidate[i].age}, 등록자
+              주소{cadidate[i].account}
+            </Card>
+          );
+        })}
+      </Paper>
     </>
   );
 }
