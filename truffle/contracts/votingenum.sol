@@ -42,6 +42,7 @@ contract VotingEnum30{
   // 선행적으로 실행해야할 
   constructor () {
     currentState = defaultVotingState;
+    winner = nullWinner;
   }
 
   // 후보자 배열 (동적/정적 차이 확인하고 다시 선언하기)
@@ -84,9 +85,8 @@ contract VotingEnum30{
 
   // 후보자에게 투표 
   function voting(uint _candidateIndex) external voterRightCheck hasVotingFinished { 
-    Candidate memory selectCandidate = candidateList[_candidateIndex];
-    selectCandidate.voteCounts++;  // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
-    if(selectCandidate.voteCounts >= voteCountToWin) {
+    candidateList[_candidateIndex].voteCounts++;  // 투표자가 후보자에게 투표를하면 후보자의 카운트 상승
+    if(candidateList[_candidateIndex].voteCounts >= voteCountToWin) {
       currentState = VotingState.FINISHED;
       winner = candidateList[_candidateIndex];
     }

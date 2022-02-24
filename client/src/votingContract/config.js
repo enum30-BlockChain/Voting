@@ -1,2 +1,2 @@
-export const gas = 1500000;
-export const gasPrice = 300000000000;
+export const gas = 1;       // Mwei
+export const gasPrice = 5;  // Gwei

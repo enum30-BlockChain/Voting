@@ -8,6 +8,8 @@ const contractAddress = votingContractInfo.contractAddress;
 const provider = window.ethereum;
 const web3 = new Web3(provider);
 const contract = new web3.eth.Contract(ABI, contractAddress);
+const gasLimit = web3.utils.toWei(`${gas}`, "Mwei");
+const gasFeeLimit = web3.utils.toWei(`${gasPrice}`, "Gwei");
 
 // 컨트랙트 함수들 불러온 Class
 export default class VotingMethods {
@@ -25,14 +27,14 @@ export default class VotingMethods {
 
     // addCandidate 함수 트랜잭션으로 보내기
     contract.methods
-      .addCandidate(_name, _age)
-      .send({
-        from: selectedAccount,
-        value: web3.utils.toWei("0.01", "ether"),
-        gas: gas,
-        gasPrice
-      })
-      .then(console.log);
+			.addCandidate(_name, _age)
+			.send({
+				from: selectedAccount,
+				value: web3.utils.toWei("0.01", "ether"),
+				gas: gasLimit,
+				gasPrice: gasFeeLimit,
+			})
+			.then(console.log);
   };
 
   //
@@ -42,9 +44,9 @@ export default class VotingMethods {
 
     // addCandidate 함수 트랜잭션으로 보내기
     contract.methods
-      .voting(_candidateName)
-      .send({ from: selectedAccount, gas, gasPrice })
-      .then(console.log);
+			.voting(_candidateName)
+			.send({ from: selectedAccount, gas: gasLimit, gasPrice: gasFeeLimit })
+			.then(console.log);
   };
 
   static getCandidateList = async () => {
@@ -76,18 +78,18 @@ export default class VotingMethods {
     const selectedAccount = await this.getSeletedAccount();
 
     contract.methods
-      .resetVoting()
-      .send({ from: selectedAccount, gas, gasPrice })
-      .then(console.log);
+			.resetVoting()
+			.send({ from: selectedAccount, gas: gasLimit, gasPrice: gasFeeLimit })
+			.then(console.log);
   };
 
   static finishVoting = async () => {
     const selectedAccount = await this.getSeletedAccount();
     
     contract.methods
-      .finishVoting()
-      .send({ from: selectedAccount, gas, gasPrice })
-      .then(console.log);
+			.finishVoting()
+			.send({ from: selectedAccount, gas: gasLimit, gasPrice: gasFeeLimit })
+			.then(console.log);
   }
 
   static getWinner = async () => {  
@@ -106,7 +108,7 @@ export default class VotingMethods {
     
     contract.methods
 			.setVoteCountsToWin(newVoteCountsToWin)
-			.send({ from: selectedAccount, gas, gasPrice })
+			.send({ from: selectedAccount, gas: gasLimit, gasPrice: gasFeeLimit })
 			.then(console.log);
   }
 }
