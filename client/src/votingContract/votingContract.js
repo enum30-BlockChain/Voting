@@ -29,7 +29,6 @@ export default class VotingMethods {
         from: selectedAccount,
         value: web3.utils.toWei("0.01", "ether"),
         gas: gas,
-        gasPrice: gasPrice,
       })
       .then(console.log);
   };
