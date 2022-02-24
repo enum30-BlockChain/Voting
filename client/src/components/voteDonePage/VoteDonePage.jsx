@@ -12,13 +12,13 @@ function VoteDonePage() {
   return (
     <div>
       <h2>투표완료자 목록</h2>
-      {selectedAccounts.map((selectedAccount,i)=>{
-        return(
-        <ul>
-          <li>{selectedAccount}</li>
-        </ul>);
+      {selectedAccounts.map((selectedAccount, i) => {
+        return (
+          <ul>
+            <li>{selectedAccount}</li>
+          </ul>
+        );
       })}
-      
     </div>
   );
 }
