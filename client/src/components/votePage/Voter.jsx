@@ -8,21 +8,18 @@ import two from "./image/two.jpg";
 import three from "./image/three.jpg";
 import four from "./image/four.jpg";
 import five from "./image/five.jpg";
-import Button from '@mui/material/Button';
-
-
+import Button from "@mui/material/Button";
 
 function Voter() {
   const [count, setCount] = useState(0);
   const [candidates, setCandidates] = useState([]);
   const [image, setImage] = useState([one, two, three, four, five]);
 
-
   useEffect(() => {
     const init = async () => {
       const candidates = await VotingMethods.getCandidateList();
       setCandidates(candidates);
-    }
+    };
     init();
   }, []);
 
@@ -46,9 +43,7 @@ function Voter() {
           투표
         </Button>
         <Link to="/elected">
-          <Button variant="contained">
-            당선 확인
-          </Button>
+          <Button variant="contained">당선 확인</Button>
         </Link>
       </div>
       <div className="candidateVote-container">
@@ -60,7 +55,7 @@ function Voter() {
             age={candidate.age}
             account={candidate.account}
             count={candidate.voteCounts}
-            image = {image}
+            image={image}
             setSeleted={setSeleted}
           />
         ))}
