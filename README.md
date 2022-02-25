@@ -11,6 +11,8 @@
 - [임철순 (Lim,Cheolsoon)](https://github.com/POcodingWER)
 - [윤석훈 (Yoon, SeokHun)](https://github.com/imysh578)
 - [박해민 (Park, HaeMin)](https://github.com/euphratesriver0216)
+![image](https://user-images.githubusercontent.com/33863016/155632074-b52f2037-2c41-495a-a327-7557573bf194.png)
+
 <br>
 
 # 1. 기획 의도
