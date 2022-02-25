@@ -3,7 +3,8 @@
 
 
 ## 협업 Tool
-[githup]()
+- githup
+- discord
 
 ## 팀원
 - [전진영 (Jeon, Jinyoung)](https://github.com/jeonjinoung)
