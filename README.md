@@ -3,13 +3,16 @@
 
 
 ## 협업 Tool
-[Notion](https://charm-locust-333.notion.site/SPIDER-COIN-c4795107c2474455bd4f93016bad8fbf)
+- githup
+- discord
 
 ## 팀원
 - [전진영 (Jeon, Jinyoung)](https://github.com/jeonjinoung)
 - [임철순 (Lim,Cheolsoon)](https://github.com/POcodingWER)
 - [윤석훈 (Yoon, SeokHun)](https://github.com/imysh578)
 - [박해민 (Park, HaeMin)](https://github.com/euphratesriver0216)
+![image](https://user-images.githubusercontent.com/33863016/155632074-b52f2037-2c41-495a-a327-7557573bf194.png)
+
 <br>
 
 # 1. 기획 의도
@@ -20,7 +23,7 @@
 1. 후보자 등록(금액 소모), 최대 5명
 2. 5명이 차야 투표 시작
 3. 참여자들 투표권은 한 표
-+ 등록된 후보 이름으로 크립토 좀비나 크립토 키티 이미지 출력
+- ~~+ 등록된 후보 이름으로 크립토 좀비나 크립토 키티 이미지 출력~~
 <br>
 
 
