@@ -3,7 +3,7 @@
 
 
 ## 협업 Tool
-[Notion](https://charm-locust-333.notion.site/SPIDER-COIN-c4795107c2474455bd4f93016bad8fbf)
+[githup]()
 
 ## 팀원
 - [전진영 (Jeon, Jinyoung)](https://github.com/jeonjinoung)
