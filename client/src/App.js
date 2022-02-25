@@ -11,10 +11,11 @@ import "./App.css";
 import getWeb3 from "./getWeb3";
 import VotingMethods from "./votingContract/votingContract.js";
 import Appbar from "../src/components/landingPage/navbar.jsx";
+import { Button, TextField } from "@mui/material";
 
 function App() {
   useEffect(() => {
-    // getWeb3();
+    getWeb3();
   }, []);
 
   return (
@@ -31,16 +32,16 @@ function App() {
           <Route path="/elected" element={<Elected />} />
           <Route path="/voteDone" element={<VoteDonePage />} />
           <Route path="/deploy" element={<Deploy deploy={deploy} />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/owner" element={<Owner />} />
         </Route>
       </Routes>
     </>
   );
 }
 
-const Test = ({ methods }) => {
+const Owner = () => {
   const [candidateList, setCandidateList] = useState([]);
-
+  const [num, setNum] = useState(3);
   useEffect(() => {
     const initFunc = async () => {
       const getResult = await VotingMethods.getCandidateList();
@@ -53,14 +54,13 @@ const Test = ({ methods }) => {
     initFunc();
   }, [])
   
-  
-  const handleOnClickAdd = () => {
-    VotingMethods.addCandidate("진영", 30);
-  };
+  const handleOnChange = (e) => {
+    setNum(e.target.value);
+  }
 
   const handleOnClickGet = () => {
     VotingMethods.getCandidateList();
-    console.log(candidateList);
+    // console.log(candidateList);
   };
   const handleOnClickReset = () => {
     VotingMethods.resetVoting();
@@ -68,15 +68,22 @@ const Test = ({ methods }) => {
   const handleOnClickStop = () => {
     VotingMethods.finishVoting();
   };
+  const handleOnClickSetVoteCountsToWin = () => {
+    VotingMethods.setVoteCountsToWin();
+    console.log(`당선 득표수 변경 : ${num}`);
+  };
 
   return (
-    <>
-      <h1>TEST</h1>
-      <button onClick={handleOnClickAdd}>Add Candidate</button>
-      <button onClick={handleOnClickGet}>Get Candidate List</button>
-      <button onClick={handleOnClickReset}>Reset</button>
-      <button onClick={handleOnClickStop}>Stop</button>
-    </>
+    <div className="owner-container">
+      <h1>Owner Page</h1>
+      <div className="owner-button-group">
+        <Button variant="contained" onClick={handleOnClickGet}>Get Candidate List</Button>
+        <Button variant="contained" onClick={handleOnClickReset}>Reset</Button>
+        <Button variant="contained" onClick={handleOnClickStop}>Stop</Button>
+        <TextField onChange={handleOnChange}/>
+        <Button variant="contained" onClick={handleOnClickSetVoteCountsToWin}>Set Vote Count To win</Button>
+      </div>
+    </div>
   );
 };
 

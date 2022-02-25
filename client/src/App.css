@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.owner-container {
+  margin-left: 30px;
+}
+.owner-button-group {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
