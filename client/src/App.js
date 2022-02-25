@@ -69,7 +69,7 @@ const Owner = () => {
     VotingMethods.finishVoting();
   };
   const handleOnClickSetVoteCountsToWin = () => {
-    VotingMethods.setVoteCountsToWin();
+    VotingMethods.setVoteCountsToWin(num);
     console.log(`당선 득표수 변경 : ${num}`);
   };
 
