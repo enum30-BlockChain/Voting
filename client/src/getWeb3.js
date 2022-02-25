@@ -19,6 +19,9 @@ const getWeb3 = () =>
               // 제일 첫번째 지갑이 현재 선택된 지갑이므로 그 주소만 출력
               selectedAccount = accounts[0];
               console.log(`Selected Account is ${selectedAccount}`);
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
             })
             .catch(console.log);
 

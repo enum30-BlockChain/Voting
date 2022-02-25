@@ -13,8 +13,8 @@ import VotingMethods from "./votingContract/votingContract.js";
 import Appbar from "../src/components/landingPage/navbar.jsx";
 
 function App() {
-  useEffect(async () => {
-    const web3 = getWeb3();
+  useEffect(() => {
+    // getWeb3();
   }, []);
 
   return (
