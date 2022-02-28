@@ -52,4 +52,4 @@ jobs:
       run: yarn build
       
     - name: Deploy
-      run: aws s3 sync ./YOUR-BUILD-DIR s3://www-solidity-vote-jeon-system.co.kr
+      run: aws s3 sync ./client/build s3://www-solidity-vote-jeon-system.co.kr
